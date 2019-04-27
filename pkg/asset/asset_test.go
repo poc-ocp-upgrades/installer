@@ -6,59 +6,61 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 )
 
 type persistAsset struct{}
 
 func (a *persistAsset) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "persist-asset"
 }
-
 func (a *persistAsset) Dependencies() []Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []Asset{}
 }
-
 func (a *persistAsset) Generate(Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return nil
 }
 
 type writablePersistAsset struct {
 	persistAsset
-	FileList []*File
+	FileList	[]*File
 }
 
 func (a *writablePersistAsset) Files() []*File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return a.FileList
 }
-
 func (a *writablePersistAsset) Load(FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return false, nil
 }
-
 func TestPersistToFile(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
-		name      string
-		filenames []string
-	}{
-		{
-			name:      "no files",
-			filenames: []string{},
-		},
-		{
-			name:      "single file",
-			filenames: []string{"file1"},
-		},
-		{
-			name:      "multiple files",
-			filenames: []string{"file1", "file2"},
-		},
-		{
-			name:      "new directory",
-			filenames: []string{"dir1/file1"},
-		},
-	}
+		name		string
+		filenames	[]string
+	}{{name: "no files", filenames: []string{}}, {name: "single file", filenames: []string{"file1"}}, {name: "multiple files", filenames: []string{"file1", "file2"}}, {name: "new directory", filenames: []string{"dir1/file1"}}}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			dir, err := ioutil.TempDir("", "TestStatePersistToFile")
@@ -66,17 +68,11 @@ func TestPersistToFile(t *testing.T) {
 				t.Skipf("could not create temporary directory: %v", err)
 			}
 			defer os.RemoveAll(dir)
-
-			asset := &writablePersistAsset{
-				FileList: make([]*File, len(tc.filenames)),
-			}
+			asset := &writablePersistAsset{FileList: make([]*File, len(tc.filenames))}
 			expectedFiles := map[string][]byte{}
 			for i, filename := range tc.filenames {
 				data := []byte(fmt.Sprintf("data%d", i))
-				asset.FileList[i] = &File{
-					Filename: filename,
-					Data:     data,
-				}
+				asset.FileList[i] = &File{Filename: filename, Data: data}
 				expectedFiles[filepath.Join(dir, filename)] = data
 			}
 			err = PersistToFile(asset, dir)
@@ -85,8 +81,11 @@ func TestPersistToFile(t *testing.T) {
 		})
 	}
 }
-
 func verifyFilesCreated(t *testing.T, dir string, expectedFiles map[string][]byte) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	dirContents, err := ioutil.ReadDir(dir)
 	assert.NoError(t, err, "could not read contents of directory %q", dir)
 	for _, fileinfo := range dirContents {

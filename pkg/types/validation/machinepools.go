@@ -2,9 +2,7 @@ package validation
 
 import (
 	"fmt"
-
 	"k8s.io/apimachinery/pkg/util/validation/field"
-
 	"github.com/openshift/installer/pkg/types"
 	"github.com/openshift/installer/pkg/types/aws"
 	awsvalidation "github.com/openshift/installer/pkg/types/aws/validation"
@@ -17,12 +15,8 @@ import (
 )
 
 var (
-	validHyperthreadingModes = map[types.HyperthreadingMode]bool{
-		types.HyperthreadingDisabled: true,
-		types.HyperthreadingEnabled:  true,
-	}
-
-	validHyperthreadingModeValues = func() []string {
+	validHyperthreadingModes	= map[types.HyperthreadingMode]bool{types.HyperthreadingDisabled: true, types.HyperthreadingEnabled: true}
+	validHyperthreadingModeValues	= func() []string {
 		v := make([]string, 0, len(validHyperthreadingModes))
 		for m := range validHyperthreadingModes {
 			v = append(v, string(m))
@@ -31,8 +25,11 @@ var (
 	}()
 )
 
-// ValidateMachinePool checks that the specified machine pool is valid.
 func ValidateMachinePool(platform *types.Platform, p *types.MachinePool, fldPath *field.Path) field.ErrorList {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if p.Replicas != nil {
 		if *p.Replicas < 0 {
@@ -47,8 +44,11 @@ func ValidateMachinePool(platform *types.Platform, p *types.MachinePool, fldPath
 	allErrs = append(allErrs, validateMachinePoolPlatform(platform, &p.Platform, fldPath.Child("platform"))...)
 	return allErrs
 }
-
 func validateMachinePoolPlatform(platform *types.Platform, p *types.MachinePoolPlatform, fldPath *field.Path) field.ErrorList {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	platformName := platform.Name()
 	validate := func(n string, value interface{}, validation func(*field.Path) field.ErrorList) {
@@ -60,16 +60,24 @@ func validateMachinePoolPlatform(platform *types.Platform, p *types.MachinePoolP
 		}
 	}
 	if p.AWS != nil {
-		validate(aws.Name, p.AWS, func(f *field.Path) field.ErrorList { return awsvalidation.ValidateMachinePool(platform.AWS, p.AWS, f) })
+		validate(aws.Name, p.AWS, func(f *field.Path) field.ErrorList {
+			return awsvalidation.ValidateMachinePool(platform.AWS, p.AWS, f)
+		})
 	}
 	if p.Azure != nil {
-		validate(azure.Name, p.Azure, func(f *field.Path) field.ErrorList { return azurevalidation.ValidateMachinePool(p.Azure, f) })
+		validate(azure.Name, p.Azure, func(f *field.Path) field.ErrorList {
+			return azurevalidation.ValidateMachinePool(p.Azure, f)
+		})
 	}
 	if p.Libvirt != nil {
-		validate(libvirt.Name, p.Libvirt, func(f *field.Path) field.ErrorList { return libvirtvalidation.ValidateMachinePool(p.Libvirt, f) })
+		validate(libvirt.Name, p.Libvirt, func(f *field.Path) field.ErrorList {
+			return libvirtvalidation.ValidateMachinePool(p.Libvirt, f)
+		})
 	}
 	if p.OpenStack != nil {
-		validate(openstack.Name, p.OpenStack, func(f *field.Path) field.ErrorList { return openstackvalidation.ValidateMachinePool(p.OpenStack, f) })
+		validate(openstack.Name, p.OpenStack, func(f *field.Path) field.ErrorList {
+			return openstackvalidation.ValidateMachinePool(p.OpenStack, f)
+		})
 	}
 	return allErrs
 }

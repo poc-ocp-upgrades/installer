@@ -3,7 +3,6 @@ package cluster
 import (
 	"fmt"
 	"os"
-
 	libvirtprovider "github.com/openshift/cluster-api-provider-libvirt/pkg/apis/libvirtproviderconfig/v1alpha1"
 	"github.com/openshift/installer/pkg/asset"
 	"github.com/openshift/installer/pkg/asset/ignition/bootstrap"
@@ -28,46 +27,34 @@ import (
 )
 
 const (
-	// TfVarsFileName is the filename for Terraform variables.
-	TfVarsFileName = "terraform.tfvars"
-
-	// TfPlatformVarsFileName is a template for platform-specific
-	// Terraform variable files.
-	//
-	// https://www.terraform.io/docs/configuration/variables.html#variable-files
-	TfPlatformVarsFileName = "terraform.%s.auto.tfvars"
-
-	tfvarsAssetName = "Terraform Variables"
+	TfVarsFileName		= "terraform.tfvars"
+	TfPlatformVarsFileName	= "terraform.%s.auto.tfvars"
+	tfvarsAssetName		= "Terraform Variables"
 )
 
-// TerraformVariables depends on InstallConfig and
-// Ignition to generate the terrafor.tfvars.
-type TerraformVariables struct {
-	FileList []*asset.File
-}
+type TerraformVariables struct{ FileList []*asset.File }
 
 var _ asset.WritableAsset = (*TerraformVariables)(nil)
 
-// Name returns the human-friendly name of the asset.
 func (t *TerraformVariables) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return tfvarsAssetName
 }
-
-// Dependencies returns the dependency of the TerraformVariable
 func (t *TerraformVariables) Dependencies() []asset.Asset {
-	return []asset.Asset{
-		&installconfig.ClusterID{},
-		&installconfig.InstallConfig{},
-		new(rhcos.Image),
-		&bootstrap.Bootstrap{},
-		&machine.Master{},
-		&machines.Master{},
-		&machines.Worker{},
-	}
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	return []asset.Asset{&installconfig.ClusterID{}, &installconfig.InstallConfig{}, new(rhcos.Image), &bootstrap.Bootstrap{}, &machine.Master{}, &machines.Master{}, &machines.Worker{}}
 }
-
-// Generate generates the terraform.tfvars file.
 func (t *TerraformVariables) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	clusterID := &installconfig.ClusterID{}
 	installConfig := &installconfig.InstallConfig{}
 	bootstrapIgnAsset := &bootstrap.Bootstrap{}
@@ -76,40 +63,22 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 	workersAsset := &machines.Worker{}
 	rhcosImage := new(rhcos.Image)
 	parents.Get(clusterID, installConfig, bootstrapIgnAsset, masterIgnAsset, mastersAsset, workersAsset, rhcosImage)
-
 	platform := installConfig.Config.Platform.Name()
 	switch platform {
 	case none.Name, vsphere.Name:
 		return errors.Errorf("cannot create the cluster because %q is a UPI platform", platform)
 	}
-
 	bootstrapIgn := string(bootstrapIgnAsset.Files()[0].Data)
 	masterIgn := string(masterIgnAsset.Files()[0].Data)
-
 	masterCount := len(mastersAsset.MachineFiles)
-	data, err := tfvars.TFVars(
-		clusterID.InfraID,
-		installConfig.Config.ClusterDomain(),
-		installConfig.Config.BaseDomain,
-		&installConfig.Config.Networking.MachineCIDR.IPNet,
-		bootstrapIgn,
-		masterIgn,
-		masterCount,
-	)
+	data, err := tfvars.TFVars(clusterID.InfraID, installConfig.Config.ClusterDomain(), installConfig.Config.BaseDomain, &installConfig.Config.Networking.MachineCIDR.IPNet, bootstrapIgn, masterIgn, masterCount)
 	if err != nil {
 		return errors.Wrap(err, "failed to get Terraform variables")
 	}
-	t.FileList = []*asset.File{
-		{
-			Filename: TfVarsFileName,
-			Data:     data,
-		},
-	}
-
+	t.FileList = []*asset.File{{Filename: TfVarsFileName, Data: data}}
 	if masterCount == 0 {
 		return errors.Errorf("master slice cannot be empty")
 	}
-
 	switch platform {
 	case aws.Name:
 		masters, err := mastersAsset.Machines()
@@ -132,64 +101,45 @@ func (t *TerraformVariables) Generate(parents asset.Parents) error {
 		if err != nil {
 			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)
 		}
-		t.FileList = append(t.FileList, &asset.File{
-			Filename: fmt.Sprintf(TfPlatformVarsFileName, platform),
-			Data:     data,
-		})
+		t.FileList = append(t.FileList, &asset.File{Filename: fmt.Sprintf(TfPlatformVarsFileName, platform), Data: data})
 	case azure.Name:
-		//TODO(serbrech): call generate azure tfvars, relying on MachineProviderConfig once available
 	case libvirt.Name:
 		masters, err := mastersAsset.Machines()
 		if err != nil {
 			return err
 		}
-		data, err = libvirttfvars.TFVars(
-			masters[0].Spec.ProviderSpec.Value.Object.(*libvirtprovider.LibvirtMachineProviderConfig),
-			string(*rhcosImage),
-			&installConfig.Config.Networking.MachineCIDR.IPNet,
-			installConfig.Config.Platform.Libvirt.Network.IfName,
-			masterCount,
-		)
+		data, err = libvirttfvars.TFVars(masters[0].Spec.ProviderSpec.Value.Object.(*libvirtprovider.LibvirtMachineProviderConfig), string(*rhcosImage), &installConfig.Config.Networking.MachineCIDR.IPNet, installConfig.Config.Platform.Libvirt.Network.IfName, masterCount)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)
 		}
-		t.FileList = append(t.FileList, &asset.File{
-			Filename: fmt.Sprintf(TfPlatformVarsFileName, platform),
-			Data:     data,
-		})
+		t.FileList = append(t.FileList, &asset.File{Filename: fmt.Sprintf(TfPlatformVarsFileName, platform), Data: data})
 	case openstack.Name:
 		masters, err := mastersAsset.Machines()
 		if err != nil {
 			return err
 		}
-		data, err = openstacktfvars.TFVars(
-			masters[0].Spec.ProviderSpec.Value.Object.(*openstackprovider.OpenstackProviderSpec),
-			installConfig.Config.Platform.OpenStack.Region,
-			installConfig.Config.Platform.OpenStack.ExternalNetwork,
-			installConfig.Config.Platform.OpenStack.LbFloatingIP,
-			installConfig.Config.Platform.OpenStack.TrunkSupport,
-		)
+		data, err = openstacktfvars.TFVars(masters[0].Spec.ProviderSpec.Value.Object.(*openstackprovider.OpenstackProviderSpec), installConfig.Config.Platform.OpenStack.Region, installConfig.Config.Platform.OpenStack.ExternalNetwork, installConfig.Config.Platform.OpenStack.LbFloatingIP, installConfig.Config.Platform.OpenStack.TrunkSupport)
 		if err != nil {
 			return errors.Wrapf(err, "failed to get %s Terraform variables", platform)
 		}
-		t.FileList = append(t.FileList, &asset.File{
-			Filename: fmt.Sprintf(TfPlatformVarsFileName, platform),
-			Data:     data,
-		})
+		t.FileList = append(t.FileList, &asset.File{Filename: fmt.Sprintf(TfPlatformVarsFileName, platform), Data: data})
 	default:
 		logrus.Warnf("unrecognized platform %s", platform)
 	}
-
 	return nil
 }
-
-// Files returns the files generated by the asset.
 func (t *TerraformVariables) Files() []*asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return t.FileList
 }
-
-// Load reads the terraform.tfvars from disk.
 func (t *TerraformVariables) Load(f asset.FileFetcher) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	file, err := f.FetchByName(TfVarsFileName)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -198,12 +148,10 @@ func (t *TerraformVariables) Load(f asset.FileFetcher) (found bool, err error) {
 		return false, err
 	}
 	t.FileList = []*asset.File{file}
-
 	fileList, err := f.FetchByPattern(fmt.Sprintf(TfPlatformVarsFileName, "*"))
 	if err != nil {
 		return false, err
 	}
 	t.FileList = append(t.FileList, fileList...)
-
 	return true, nil
 }

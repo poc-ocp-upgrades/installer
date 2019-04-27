@@ -2,19 +2,23 @@ package lineprinter
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 )
 
-type printer struct {
-	data [][]interface{}
-}
+type printer struct{ data [][]interface{} }
 
 func (p *printer) print(args ...interface{}) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	p.data = append(p.data, args)
 }
-
 func TestLinePrinter(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	print := &printer{}
 	lp := &LinePrinter{Print: print.print}
 	data := []byte("Hello\nWorld\nAnd more")
@@ -22,28 +26,12 @@ func TestLinePrinter(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-
 	assert.Equal(t, len(data), n)
-	assert.Equal(
-		t,
-		[][]interface{}{
-			{"Hello\n"},
-			{"World\n"},
-		},
-		print.data,
-	)
+	assert.Equal(t, [][]interface{}{{"Hello\n"}, {"World\n"}}, print.data)
 	print.data = [][]interface{}{}
-
 	err = lp.Close()
 	if err != nil {
 		t.Fatal(err)
 	}
-
-	assert.Equal(
-		t,
-		[][]interface{}{
-			{"And more"},
-		},
-		print.data,
-	)
+	assert.Equal(t, [][]interface{}{{"And more"}}, print.data)
 }

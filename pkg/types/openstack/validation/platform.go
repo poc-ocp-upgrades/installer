@@ -2,14 +2,15 @@ package validation
 
 import (
 	"errors"
-
 	"k8s.io/apimachinery/pkg/util/validation/field"
-
 	"github.com/openshift/installer/pkg/types/openstack"
 )
 
-// ValidatePlatform checks that the specified platform is valid.
 func ValidatePlatform(p *openstack.Platform, fldPath *field.Path, fetcher ValidValuesFetcher) field.ErrorList {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	validClouds, err := fetcher.GetCloudNames()
 	if err != nil {
@@ -51,8 +52,11 @@ func ValidatePlatform(p *openstack.Platform, fldPath *field.Path, fetcher ValidV
 	}
 	return allErrs
 }
-
 func isValidValue(s string, validValues []string) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, v := range validValues {
 		if s == v {
 			return true

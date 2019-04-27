@@ -5,12 +5,14 @@ import (
 )
 
 const (
-	// DefaultURI is the default URI of the libvirtd connection.
 	DefaultURI = "qemu+tcp://192.168.122.1/system"
 )
 
-// SetPlatformDefaults sets the defaults for the platform.
 func SetPlatformDefaults(p *libvirt.Platform) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if p.URI == "" {
 		p.URI = DefaultURI
 	}

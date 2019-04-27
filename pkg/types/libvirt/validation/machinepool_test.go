@@ -2,25 +2,21 @@ package validation
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/util/validation/field"
-
 	"github.com/openshift/installer/pkg/types/libvirt"
 )
 
 func TestValidateMachinePool(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
-		name  string
-		pool  *libvirt.MachinePool
-		valid bool
-	}{
-		{
-			name:  "empty",
-			pool:  &libvirt.MachinePool{},
-			valid: true,
-		},
-	}
+		name	string
+		pool	*libvirt.MachinePool
+		valid	bool
+	}{{name: "empty", pool: &libvirt.MachinePool{}, valid: true}}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			err := ValidateMachinePool(tc.pool, field.NewPath("test-path")).ToAggregate()

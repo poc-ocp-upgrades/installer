@@ -4,11 +4,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-
 	"github.com/ghodss/yaml"
-
 	mcfgv1 "github.com/openshift/machine-config-operator/pkg/apis/machineconfiguration.openshift.io/v1"
-
 	"github.com/openshift/installer/pkg/asset"
 )
 
@@ -20,8 +17,11 @@ var (
 	machineConfigFileNamePattern = fmt.Sprintf(machineConfigFileName, "*")
 )
 
-// Manifests creates manifest files containing the MachineConfigs.
 func Manifests(configs []*mcfgv1.MachineConfig, role, directory string) ([]*asset.File, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	data := []byte{}
 	for _, c := range configs {
 		if c == nil {
@@ -37,25 +37,24 @@ func Manifests(configs []*mcfgv1.MachineConfig, role, directory string) ([]*asse
 	if len(data) == 0 {
 		return nil, nil
 	}
-	return []*asset.File{
-		{
-			Filename: filepath.Join(directory, fmt.Sprintf(machineConfigFileName, role)),
-			Data:     data,
-		},
-	}, nil
+	return []*asset.File{{Filename: filepath.Join(directory, fmt.Sprintf(machineConfigFileName, role)), Data: data}}, nil
 }
-
-// IsManifest tests whether the specified filename is a MachineConfig manifest.
 func IsManifest(filename string) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	matched, err := filepath.Match(machineConfigFileNamePattern, filename)
 	if err != nil {
 		return false, err
 	}
 	return matched, nil
 }
-
-// Load loads the MachineConfig manifests.
 func Load(f asset.FileFetcher, role, directory string) ([]*asset.File, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	file, err := f.FetchByName(filepath.Join(directory, fmt.Sprintf(machineConfigFileName, role)))
 	if err != nil {
 		if os.IsNotExist(err) {

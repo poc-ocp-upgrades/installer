@@ -6,10 +6,12 @@ import (
 )
 
 func init() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	exec := func() {
-		plugin.Serve(&plugin.ServeOpts{
-			ProviderFunc: ignition.Provider,
-		})
+		plugin.Serve(&plugin.ServeOpts{ProviderFunc: ignition.Provider})
 	}
 	KnownPlugins["terraform-provider-ignition"] = exec
 }

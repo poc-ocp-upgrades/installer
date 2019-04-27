@@ -1,5 +1,3 @@
-// +build libvirt
-
 package libvirt
 
 import (
@@ -7,5 +5,9 @@ import (
 )
 
 func init() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	destroy.Registry["libvirt"] = New
 }

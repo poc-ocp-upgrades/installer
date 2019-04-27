@@ -7,12 +7,10 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
-
 	"github.com/openshift/installer/pkg/asset/installconfig"
 	assetstore "github.com/openshift/installer/pkg/asset/store"
 	"github.com/openshift/installer/pkg/terraform"
@@ -23,49 +21,50 @@ import (
 )
 
 func newGatherCmd() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "gather",
-		Short: "Gather debugging data for a given installation failure",
-		Long: `Gather debugging data for a given installation failure.
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	cmd := &cobra.Command{Use: "gather", Short: "Gather debugging data for a given installation failure", Long: `Gather debugging data for a given installation failure.
 
 When installation for Openshift cluster fails, gathering all the data useful for debugging can
 become a difficult task. This command helps users to collect the most relevant information that can be used
-to debug the installation failures`,
-		RunE: func(cmd *cobra.Command, args []string) error {
-			return cmd.Help()
-		},
-	}
+to debug the installation failures`, RunE: func(cmd *cobra.Command, args []string) error {
+		return cmd.Help()
+	}}
 	cmd.AddCommand(newGatherBootstrapCmd())
 	return cmd
 }
 
 var (
 	gatherBootstrapOpts struct {
-		bootstrap string
-		masters   []string
+		bootstrap	string
+		masters		[]string
 	}
 )
 
 func newGatherBootstrapCmd() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "bootstrap",
-		Short: "Gather debugging data for a failing to bootstrap control plane",
-		Args:  cobra.ExactArgs(0),
-		Run: func(_ *cobra.Command, _ []string) {
-			cleanup := setupFileHook(rootOpts.dir)
-			defer cleanup()
-			err := runGatherBootstrapCmd(rootOpts.dir)
-			if err != nil {
-				logrus.Fatal(err)
-			}
-		},
-	}
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	cmd := &cobra.Command{Use: "bootstrap", Short: "Gather debugging data for a failing to bootstrap control plane", Args: cobra.ExactArgs(0), Run: func(_ *cobra.Command, _ []string) {
+		cleanup := setupFileHook(rootOpts.dir)
+		defer cleanup()
+		err := runGatherBootstrapCmd(rootOpts.dir)
+		if err != nil {
+			logrus.Fatal(err)
+		}
+	}}
 	cmd.PersistentFlags().StringVar(&gatherBootstrapOpts.bootstrap, "bootstrap", "", "Hostname or IP of the bootstrap host")
 	cmd.PersistentFlags().StringArrayVar(&gatherBootstrapOpts.masters, "master", []string{}, "Hostnames or IPs of all control plane hosts")
 	return cmd
 }
-
 func runGatherBootstrapCmd(directory string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tfStateFilePath := filepath.Join(directory, terraform.StateFileName)
 	_, err := os.Stat(tfStateFilePath)
 	if os.IsNotExist(err) {
@@ -74,27 +73,22 @@ func runGatherBootstrapCmd(directory string) error {
 	if err != nil {
 		return err
 	}
-
 	assetStore, err := assetstore.NewStore(directory)
 	if err != nil {
 		return errors.Wrap(err, "failed to create asset store")
 	}
-
 	config := &installconfig.InstallConfig{}
 	if err := assetStore.Fetch(config); err != nil {
 		return errors.Wrapf(err, "failed to fetch %s", config.Name())
 	}
-
 	sfRaw, err := ioutil.ReadFile(tfStateFilePath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read %q", tfStateFilePath)
 	}
-
 	var tfstate terraformState
 	if err := json.Unmarshal(sfRaw, &tfstate); err != nil {
 		return errors.Wrapf(err, "failed to unmarshal %q", tfStateFilePath)
 	}
-
 	bootstrap, masters, err := extractHostAddresses(config.Config, tfstate)
 	if err != nil {
 		if err2, ok := err.(errUnSupportedGatherPlatform); ok {
@@ -103,12 +97,14 @@ func runGatherBootstrapCmd(directory string) error {
 		}
 		return errors.Wrapf(err, "failed to get bootstrap and control plane host addresses from %q", tfStateFilePath)
 	}
-
 	logGatherBootstrap(bootstrap, masters)
 	return nil
 }
-
 func logGatherBootstrap(bootstrap string, masters []string) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if s, ok := os.LookupEnv("SSH_AUTH_SOCK"); !ok || s == "" {
 		logrus.Info("Make sure ssh-agent is running, env SSH_AUTH_SOCK is set to the ssh-agent's UNIX socket and your private key is added to the agent.")
 	}
@@ -116,8 +112,11 @@ func logGatherBootstrap(bootstrap string, masters []string) {
 	logrus.Infof("ssh -A core@%s '/usr/local/bin/installer-gather.sh %s'", bootstrap, strings.Join(masters, " "))
 	logrus.Infof("scp core@%s:~/log-bundle.tar.gz .", bootstrap)
 }
-
 func extractHostAddresses(config *types.InstallConfig, tfstate terraformState) (bootstrap string, masters []string, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mcount := *config.ControlPlane.Replicas
 	switch config.Platform.Name() {
 	case awstypes.Name:
@@ -126,7 +125,6 @@ func extractHostAddresses(config *types.InstallConfig, tfstate terraformState) (
 		if err != nil {
 			return bootstrap, masters, errors.Wrapf(err, "failed to get bootstrap host addresses")
 		}
-
 		mm := tfstate.Modules["root/masters"]
 		for idx := int64(0); idx < mcount; idx++ {
 			r := fmt.Sprintf("aws_instance.master.%d", idx)
@@ -146,7 +144,6 @@ func extractHostAddresses(config *types.InstallConfig, tfstate terraformState) (
 		if err != nil {
 			return bootstrap, masters, errors.Wrapf(err, "failed to get bootstrap host addresses")
 		}
-
 		rm := tfstate.Modules["root"]
 		for idx := int64(0); idx < mcount; idx++ {
 			r := fmt.Sprintf("libvirt_domain.master.%d", idx)
@@ -166,7 +163,6 @@ func extractHostAddresses(config *types.InstallConfig, tfstate terraformState) (
 		if err != nil {
 			return bootstrap, masters, errors.Wrapf(err, "failed to get bootstrap host addresses")
 		}
-
 		mm := tfstate.Modules["root/masters"]
 		for idx := int64(0); idx < mcount; idx++ {
 			r := fmt.Sprintf("openstack_compute_instance_v2.master_conf.%d", idx)
@@ -189,15 +185,18 @@ func extractHostAddresses(config *types.InstallConfig, tfstate terraformState) (
 type terraformState struct {
 	Modules map[string]terraformStateModule
 }
-
 type terraformStateModule struct {
 	Resources map[string]map[string]interface{} `json:"resources"`
 }
 
 func (tfs *terraformState) UnmarshalJSON(raw []byte) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var transform struct {
 		Modules []struct {
-			Path []string `json:"path"`
+			Path	[]string	`json:"path"`
 			terraformStateModule
 		} `json:"modules"`
 	}
@@ -216,19 +215,23 @@ func (tfs *terraformState) UnmarshalJSON(raw []byte) error {
 	return nil
 }
 
-type errUnSupportedGatherPlatform struct {
-	Message string
-}
+type errUnSupportedGatherPlatform struct{ Message string }
 
 func (e errUnSupportedGatherPlatform) Error() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return e.Message
 }
-
 func unSupportedPlatformGather() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if gatherBootstrapOpts.bootstrap == "" || len(gatherBootstrapOpts.masters) == 0 {
 		return errors.New("boostrap host address and at least one control plane host address must be provided")
 	}
-
 	logGatherBootstrap(gatherBootstrapOpts.bootstrap, gatherBootstrapOpts.masters)
 	return nil
 }

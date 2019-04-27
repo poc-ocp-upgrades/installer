@@ -2,21 +2,17 @@ package vsphere
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/assert"
-
 	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
 func TestCloudProviderConfig(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	clusterName := "test-cluster"
-	platform := &vspheretypes.Platform{
-		VCenter:          "test-name",
-		Username:         "test-username",
-		Password:         "test-password",
-		Datacenter:       "test-datacenter",
-		DefaultDatastore: "test-datastore",
-	}
+	platform := &vspheretypes.Platform{VCenter: "test-name", Username: "test-username", Password: "test-password", Datacenter: "test-datacenter", DefaultDatastore: "test-datastore"}
 	expectedConfig := `[Global]
 secret-name      = vsphere-creds
 secret-namespace = kube-system

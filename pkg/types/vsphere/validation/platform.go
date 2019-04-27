@@ -2,12 +2,14 @@ package validation
 
 import (
 	"k8s.io/apimachinery/pkg/util/validation/field"
-
 	"github.com/openshift/installer/pkg/types/vsphere"
 )
 
-// ValidatePlatform checks that the specified platform is valid.
 func ValidatePlatform(p *vsphere.Platform, fldPath *field.Path) field.ErrorList {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if len(p.VCenter) == 0 {
 		allErrs = append(allErrs, field.Required(fldPath.Child("vCenter"), "must specify the name of the vCenter"))

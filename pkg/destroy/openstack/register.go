@@ -1,4 +1,3 @@
-// Package openstack provides a cluster-destroyer for openstack clusters.
 package openstack
 
 import (
@@ -6,5 +5,9 @@ import (
 )
 
 func init() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	destroy.Registry["openstack"] = New
 }
