@@ -7,6 +7,8 @@ func (p *MachinePool) Set(required *MachinePool) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if required == nil || p == nil {
 		return
 	}

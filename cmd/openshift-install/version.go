@@ -13,9 +13,13 @@ func newVersionCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &cobra.Command{Use: "version", Short: "Print version information", Long: "", Args: cobra.ExactArgs(0), RunE: runVersionCmd}
 }
 func runVersionCmd(cmd *cobra.Command, args []string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

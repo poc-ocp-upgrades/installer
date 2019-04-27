@@ -15,9 +15,13 @@ func (a *AggregatorCA) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (a *AggregatorCA) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -26,6 +30,8 @@ func (a *AggregatorCA) Generate(dependencies asset.Parents) error {
 	return a.SelfSignedCertKey.Generate(cfg, "aggregator-ca")
 }
 func (a *AggregatorCA) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -42,9 +48,13 @@ func (a *APIServerProxyCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&AggregatorCA{}}
 }
 func (a *APIServerProxyCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -55,6 +65,8 @@ func (a *APIServerProxyCertKey) Generate(dependencies asset.Parents) error {
 	return a.SignedCertKey.Generate(cfg, aggregatorCA, "apiserver-proxy", DoNotAppendParent)
 }
 func (a *APIServerProxyCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -71,9 +83,13 @@ func (c *AggregatorSignerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *AggregatorSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -82,6 +98,8 @@ func (c *AggregatorSignerCertKey) Generate(parents asset.Parents) error {
 	return c.SelfSignedCertKey.Generate(cfg, "aggregator-signer")
 }
 func (c *AggregatorSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -98,9 +116,13 @@ func (a *AggregatorCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&AggregatorSignerCertKey{}}
 }
 func (a *AggregatorCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -117,6 +139,8 @@ func (a *AggregatorCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (aggregator-ca-bundle)"
 }
 
@@ -129,9 +153,13 @@ func (a *AggregatorClientCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&AggregatorSignerCertKey{}}
 }
 func (a *AggregatorClientCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -142,6 +170,8 @@ func (a *AggregatorClientCertKey) Generate(dependencies asset.Parents) error {
 	return a.SignedCertKey.Generate(cfg, ca, "aggregator-client", DoNotAppendParent)
 }
 func (a *AggregatorClientCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

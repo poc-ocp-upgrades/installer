@@ -52,9 +52,13 @@ func defaultAWSMachinePoolPlatform() awstypes.MachinePool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return awstypes.MachinePool{EC2RootVolume: awstypes.EC2RootVolume{Type: "gp2", Size: 120}}
 }
 func defaultLibvirtMachinePoolPlatform() libvirttypes.MachinePool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -66,9 +70,13 @@ func defaultAzureMachinePoolPlatform() azuretypes.MachinePool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return azuretypes.MachinePool{}
 }
 func defaultOpenStackMachinePoolPlatform(flavor string) openstacktypes.MachinePool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -87,9 +95,13 @@ func (w *Worker) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Worker Machines"
 }
 func (w *Worker) Dependencies() []asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -101,11 +113,15 @@ func awsDefaultWorkerMachineType(installconfig *installconfig.InstallConfig) str
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	region := installconfig.Config.Platform.AWS.Region
 	instanceClass := awsdefaults.InstanceClass(region)
 	return fmt.Sprintf("%s.large", instanceClass)
 }
 func (w *Worker) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -215,6 +231,8 @@ func (w *Worker) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	files := make([]*asset.File, 0, 1+len(w.MachineConfigFiles)+len(w.MachineSetFiles))
 	if w.UserDataFile != nil {
 		files = append(files, w.UserDataFile)
@@ -224,6 +242,8 @@ func (w *Worker) Files() []*asset.File {
 	return files
 }
 func (w *Worker) Load(f asset.FileFetcher) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -248,6 +268,8 @@ func (w *Worker) Load(f asset.FileFetcher) (found bool, err error) {
 	return true, nil
 }
 func (w *Worker) MachineSets() ([]machineapi.MachineSet, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

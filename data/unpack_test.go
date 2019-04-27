@@ -13,6 +13,8 @@ func TestUnpack(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	path, err := ioutil.TempDir("", "installer-data-test-")
 	if err != nil {
 		t.Fatal(err)

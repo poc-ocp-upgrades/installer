@@ -17,9 +17,13 @@ func validMachinePool(name string) *types.MachinePool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &types.MachinePool{Name: name, Replicas: pointer.Int64Ptr(1), Hyperthreading: types.HyperthreadingDisabled}
 }
 func TestValidateMachinePool(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

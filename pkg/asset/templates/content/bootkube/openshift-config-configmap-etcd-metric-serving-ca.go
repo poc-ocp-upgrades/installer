@@ -20,6 +20,8 @@ func (t *OpenshiftConfigConfigmapEtcdMetricServingCA) Dependencies() []asset.Ass
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (t *OpenshiftConfigConfigmapEtcdMetricServingCA) Name() string {
@@ -27,9 +29,13 @@ func (t *OpenshiftConfigConfigmapEtcdMetricServingCA) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "OpenshiftConfigConfigmapEtcdMetricServingCA"
 }
 func (t *OpenshiftConfigConfigmapEtcdMetricServingCA) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -47,9 +53,13 @@ func (t *OpenshiftConfigConfigmapEtcdMetricServingCA) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return t.FileList
 }
 func (t *OpenshiftConfigConfigmapEtcdMetricServingCA) Load(f asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

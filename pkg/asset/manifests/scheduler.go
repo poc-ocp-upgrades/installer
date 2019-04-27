@@ -22,6 +22,8 @@ func (*Scheduler) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Scheduler Config"
 }
 func (*Scheduler) Dependencies() []asset.Asset {
@@ -29,9 +31,13 @@ func (*Scheduler) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (s *Scheduler) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -49,9 +55,13 @@ func (s *Scheduler) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return s.FileList
 }
 func (s *Scheduler) Load(f asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

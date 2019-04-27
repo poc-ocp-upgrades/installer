@@ -20,6 +20,8 @@ func (t *KubeadminPasswordSecret) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (t *KubeadminPasswordSecret) Name() string {
@@ -27,9 +29,13 @@ func (t *KubeadminPasswordSecret) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "KubeadminPasswordSecret"
 }
 func (t *KubeadminPasswordSecret) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -47,9 +53,13 @@ func (t *KubeadminPasswordSecret) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return t.FileList
 }
 func (t *KubeadminPasswordSecret) Load(f asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

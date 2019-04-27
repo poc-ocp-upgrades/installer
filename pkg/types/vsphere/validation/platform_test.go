@@ -12,9 +12,13 @@ func validPlatform() *vsphere.Platform {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &vsphere.Platform{VCenter: "test-vcenter", Username: "test-username", Password: "test-password", Datacenter: "test-datacenter", DefaultDatastore: "test-datastore"}
 }
 func TestValidatePlatform(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

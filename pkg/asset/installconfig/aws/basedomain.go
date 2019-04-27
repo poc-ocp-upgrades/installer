@@ -17,10 +17,14 @@ func IsForbidden(err error) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	requestError, ok := err.(awserr.RequestFailure)
 	return ok && requestError.StatusCode() == http.StatusForbidden
 }
 func GetBaseDomain() (string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -65,6 +69,8 @@ func GetBaseDomain() (string, error) {
 	return domain, nil
 }
 func GetPublicZone(name string) (*route53.HostedZone, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -12,9 +12,13 @@ func defaultMachinePool(name string) *types.MachinePool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &types.MachinePool{Name: name, Replicas: pointer.Int64Ptr(3), Hyperthreading: types.HyperthreadingEnabled}
 }
 func TestSetMahcinePoolDefaults(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

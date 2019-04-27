@@ -39,6 +39,8 @@ func (m *Manifests) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Common Manifests"
 }
 func (m *Manifests) Dependencies() []asset.Asset {
@@ -46,9 +48,13 @@ func (m *Manifests) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&installconfig.ClusterID{}, &installconfig.InstallConfig{}, &Ingress{}, &DNS{}, &Infrastructure{}, &Networking{}, &tls.RootCA{}, &tls.EtcdCA{}, &tls.EtcdSignerCertKey{}, &tls.EtcdCABundle{}, &tls.EtcdSignerClientCertKey{}, &tls.EtcdClientCertKey{}, &tls.EtcdMetricCABundle{}, &tls.EtcdMetricSignerClientCertKey{}, &tls.MCSCertKey{}, &bootkube.CVOOverrides{}, &bootkube.EtcdServiceKubeSystem{}, &bootkube.HostEtcdServiceEndpointsKubeSystem{}, &bootkube.HostEtcdServiceKubeSystem{}, &bootkube.KubeCloudConfig{}, &bootkube.KubeSystemConfigmapEtcdCA{}, &bootkube.KubeSystemConfigmapEtcdServingCA{}, &bootkube.KubeSystemConfigmapRootCA{}, &bootkube.KubeSystemSecretEtcdClient{}, &bootkube.KubeSystemSecretEtcdClientCADeprecated{}, &bootkube.KubeSystemSecretEtcdSigner{}, &bootkube.KubeSystemSecretEtcdSignerClient{}, &bootkube.MachineConfigServerTLSSecret{}, &bootkube.OpenshiftConfigConfigmapEtcdMetricServingCA{}, &bootkube.OpenshiftConfigSecretEtcdMetricClient{}, &bootkube.OpenshiftConfigSecretPullSecret{}, &bootkube.OpenshiftMachineConfigOperator{}}
 }
 func (m *Manifests) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -82,9 +88,13 @@ func (m *Manifests) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return m.FileList
 }
 func (m *Manifests) generateBootKubeManifests(dependencies asset.Parents) []*asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -120,6 +130,8 @@ func applyTemplateData(data []byte, templateData interface{}) []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	template := template.Must(template.New("template").Funcs(customTmplFuncs).Parse(string(data)))
 	buf := &bytes.Buffer{}
 	if err := template.Execute(buf, templateData); err != nil {
@@ -128,6 +140,8 @@ func applyTemplateData(data []byte, templateData interface{}) []byte {
 	return buf.Bytes()
 }
 func (m *Manifests) Load(f asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -161,6 +175,8 @@ func redactedInstallConfig(config types.InstallConfig) ([]byte, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	config.PullSecret = ""
 	if config.Platform.VSphere != nil {
 		p := *config.Platform.VSphere
@@ -171,6 +187,8 @@ func redactedInstallConfig(config types.InstallConfig) ([]byte, error) {
 	return yaml.Marshal(config)
 }
 func indent(indention int, v string) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

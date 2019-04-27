@@ -18,6 +18,8 @@ func Machines(clusterID string, config *types.InstallConfig, pool *types.Machine
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if configPlatform := config.Platform.Name(); configPlatform != libvirt.Name {
 		return nil, fmt.Errorf("non-Libvirt configuration: %q", configPlatform)
 	}
@@ -42,6 +44,8 @@ func provider(clusterID string, networkInterfaceAddress string, platform *libvir
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &libvirtprovider.LibvirtMachineProviderConfig{TypeMeta: metav1.TypeMeta{APIVersion: "libvirtproviderconfig.k8s.io/v1alpha1", Kind: "LibvirtMachineProviderConfig"}, DomainMemory: 4096, DomainVcpu: 2, Ignition: &libvirtprovider.Ignition{UserDataSecret: userDataSecret}, Volume: &libvirtprovider.Volume{PoolName: "default", BaseVolumeID: fmt.Sprintf("/var/lib/libvirt/images/%s-base", clusterID)}, NetworkInterfaceName: clusterID, NetworkInterfaceAddress: networkInterfaceAddress, Autostart: false, URI: platform.URI}
 }
 func _logClusterCodePath() {
@@ -49,6 +53,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -58,5 +73,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

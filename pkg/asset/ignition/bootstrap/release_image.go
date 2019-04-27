@@ -17,6 +17,8 @@ func DefaultReleaseImage() (string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if strings.HasPrefix(defaultReleaseImagePadded, defaultReleaseImagePrefix) {
 		return defaultReleaseImageOriginal, nil
 	}

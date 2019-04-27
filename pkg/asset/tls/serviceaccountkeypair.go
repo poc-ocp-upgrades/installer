@@ -11,9 +11,13 @@ func (a *ServiceAccountKeyPair) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (a *ServiceAccountKeyPair) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -25,9 +29,13 @@ func (a *ServiceAccountKeyPair) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Key Pair (service-account.pub)"
 }
 func (a *ServiceAccountKeyPair) Load(asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

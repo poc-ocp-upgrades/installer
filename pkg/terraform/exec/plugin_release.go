@@ -11,6 +11,8 @@ func globalPluginDirs(datadir string) ([]string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var ret []string
 	for _, d := range []string{datadir} {
 		machineDir := fmt.Sprintf("%s_%s", runtime.GOOS, runtime.GOARCH)

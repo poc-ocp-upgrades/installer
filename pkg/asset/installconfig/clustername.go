@@ -16,9 +16,13 @@ func (a *clusterName) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&baseDomain{}}
 }
 func (a *clusterName) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -30,6 +34,8 @@ func (a *clusterName) Generate(parents asset.Parents) error {
 	})}}, &a.ClusterName)
 }
 func (a *clusterName) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

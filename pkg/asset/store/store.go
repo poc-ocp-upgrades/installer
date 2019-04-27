@@ -42,9 +42,13 @@ func NewStore(dir string) (asset.Store, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return newStore(dir)
 }
 func newStore(dir string) (*storeImpl, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -56,6 +60,8 @@ func newStore(dir string) (*storeImpl, error) {
 	return store, nil
 }
 func (s *storeImpl) Fetch(a asset.Asset, preserved ...asset.WritableAsset) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -72,6 +78,8 @@ func (s *storeImpl) Fetch(a asset.Asset, preserved ...asset.WritableAsset) error
 	return nil
 }
 func (s *storeImpl) Destroy(a asset.Asset) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -99,6 +107,8 @@ func (s *storeImpl) DestroyState() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	s.stateFileAssets = nil
 	path := filepath.Join(s.directory, stateFileName)
 	err := os.Remove(path)
@@ -111,6 +121,8 @@ func (s *storeImpl) DestroyState() error {
 	return nil
 }
 func (s *storeImpl) loadStateFile() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -136,6 +148,8 @@ func (s *storeImpl) loadAssetFromState(a asset.Asset) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	bytes, ok := s.stateFileAssets[reflect.TypeOf(a).String()]
 	if !ok {
 		return errors.Errorf("asset %q is not found in the state file", a.Name())
@@ -147,10 +161,14 @@ func (s *storeImpl) isAssetInState(a asset.Asset) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, ok := s.stateFileAssets[reflect.TypeOf(a).String()]
 	return ok
 }
 func (s *storeImpl) saveStateFile() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -186,6 +204,8 @@ func (s *storeImpl) fetch(a asset.Asset, indent string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logrus.Debugf("%sFetching %q...", indent, a.Name())
 	assetState, ok := s.assets[reflect.TypeOf(a)]
 	if !ok {
@@ -216,6 +236,8 @@ func (s *storeImpl) fetch(a asset.Asset, indent string) error {
 	return nil
 }
 func (s *storeImpl) load(a asset.Asset, indent string) (*assetState, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -297,6 +319,8 @@ func (s *storeImpl) purge(excluded []asset.WritableAsset) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	excl := make(map[reflect.Type]bool, len(excluded))
 	for _, a := range excluded {
 		excl[reflect.TypeOf(a)] = true
@@ -314,6 +338,8 @@ func (s *storeImpl) purge(excluded []asset.WritableAsset) error {
 	return nil
 }
 func increaseIndent(indent string) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

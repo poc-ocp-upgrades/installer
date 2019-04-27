@@ -22,6 +22,8 @@ func TFVars(masterConfig *v1alpha1.LibvirtMachineProviderConfig, osImage string,
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	bootstrapIP, err := cidr.Host(machineCIDR, 10)
 	if err != nil {
 		return nil, errors.Errorf("failed to generate bootstrap IP: %v", err)
@@ -38,6 +40,8 @@ func TFVars(masterConfig *v1alpha1.LibvirtMachineProviderConfig, osImage string,
 	return json.MarshalIndent(cfg, "", "  ")
 }
 func generateIPs(name string, network *net.IPNet, count int, offset int) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

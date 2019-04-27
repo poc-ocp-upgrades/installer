@@ -10,6 +10,8 @@ func SetMachinePoolDefaults(p *types.MachinePool, platform string) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	defaultReplicaCount := int64(3)
 	if platform == libvirt.Name {
 		defaultReplicaCount = 1

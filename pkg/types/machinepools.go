@@ -34,6 +34,8 @@ func (p *MachinePoolPlatform) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	switch {
 	case p == nil:
 		return ""

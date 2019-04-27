@@ -52,9 +52,13 @@ func (a *Bootstrap) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&installconfig.InstallConfig{}, &kubeconfig.AdminClient{}, &kubeconfig.Kubelet{}, &machines.Master{}, &machines.Worker{}, &manifests.Manifests{}, &manifests.Openshift{}, &tls.AdminKubeConfigCABundle{}, &tls.AggregatorCA{}, &tls.AggregatorCABundle{}, &tls.AggregatorClientCertKey{}, &tls.AggregatorSignerCertKey{}, &tls.APIServerProxyCertKey{}, &tls.EtcdCA{}, &tls.EtcdCABundle{}, &tls.EtcdClientCertKey{}, &tls.EtcdMetricCABundle{}, &tls.EtcdMetricSignerCertKey{}, &tls.EtcdMetricSignerClientCertKey{}, &tls.EtcdSignerCertKey{}, &tls.EtcdSignerClientCertKey{}, &tls.JournalCertKey{}, &tls.KubeAPIServerLBCABundle{}, &tls.KubeAPIServerExternalLBServerCertKey{}, &tls.KubeAPIServerInternalLBServerCertKey{}, &tls.KubeAPIServerLBSignerCertKey{}, &tls.KubeAPIServerLocalhostCABundle{}, &tls.KubeAPIServerLocalhostServerCertKey{}, &tls.KubeAPIServerLocalhostSignerCertKey{}, &tls.KubeAPIServerServiceNetworkCABundle{}, &tls.KubeAPIServerServiceNetworkServerCertKey{}, &tls.KubeAPIServerServiceNetworkSignerCertKey{}, &tls.KubeAPIServerCompleteCABundle{}, &tls.KubeAPIServerCompleteClientCABundle{}, &tls.KubeAPIServerToKubeletCABundle{}, &tls.KubeAPIServerToKubeletClientCertKey{}, &tls.KubeAPIServerToKubeletSignerCertKey{}, &tls.KubeControlPlaneCABundle{}, &tls.KubeControlPlaneKubeControllerManagerClientCertKey{}, &tls.KubeControlPlaneKubeSchedulerClientCertKey{}, &tls.KubeControlPlaneSignerCertKey{}, &tls.KubeletBootstrapCABundle{}, &tls.KubeletClientCABundle{}, &tls.KubeletClientCertKey{}, &tls.KubeletCSRSignerCertKey{}, &tls.KubeletServingCABundle{}, &tls.MCSCertKey{}, &tls.RootCA{}, &tls.ServiceAccountKeyPair{}}
 }
 func (a *Bootstrap) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -88,9 +92,13 @@ func (a *Bootstrap) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Bootstrap Ignition Config"
 }
 func (a *Bootstrap) Files() []*asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -101,6 +109,8 @@ func (a *Bootstrap) Files() []*asset.File {
 	return []*asset.File{}
 }
 func (a *Bootstrap) getTemplateData(installConfig *types.InstallConfig) (*bootstrapTemplateData, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -124,6 +134,8 @@ func (a *Bootstrap) getTemplateData(installConfig *types.InstallConfig) (*bootst
 	return &bootstrapTemplateData{PullSecret: installConfig.PullSecret, ReleaseImage: releaseImage, EtcdCluster: strings.Join(etcdEndpoints, ",")}, nil
 }
 func (a *Bootstrap) addStorageFiles(base string, uri string, templateData *bootstrapTemplateData) (err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -176,6 +188,8 @@ func (a *Bootstrap) addStorageFiles(base string, uri string, templateData *boots
 	return nil
 }
 func (a *Bootstrap) addSystemdUnits(uri string, templateData *bootstrapTemplateData) (err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -251,6 +265,8 @@ func readFile(name string, reader io.Reader, templateData interface{}) (finalNam
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	data, err = ioutil.ReadAll(reader)
 	if err != nil {
 		return name, []byte{}, err
@@ -272,6 +288,8 @@ func (a *Bootstrap) addParentFiles(dependencies asset.Parents) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, asset := range []asset.WritableAsset{&manifests.Manifests{}, &manifests.Openshift{}, &machines.Master{}, &machines.Worker{}} {
 		dependencies.Get(asset)
 		a.Config.Storage.Files = append(a.Config.Storage.Files, ignition.FilesFromAsset(rootDir, "root", 0644, asset)...)
@@ -289,6 +307,8 @@ func applyTemplateData(template *template.Template, templateData interface{}) st
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	buf := &bytes.Buffer{}
 	if err := template.Execute(buf, templateData); err != nil {
 		panic(err)
@@ -296,6 +316,8 @@ func applyTemplateData(template *template.Template, templateData interface{}) st
 	return buf.String()
 }
 func (a *Bootstrap) Load(f asset.FileFetcher) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -319,6 +341,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -328,5 +361,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

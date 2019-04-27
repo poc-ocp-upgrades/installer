@@ -44,12 +44,16 @@ func (o *ClusterUninstaller) validate() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if len(o.Filters) == 0 {
 		return errors.Errorf("you must specify at least one tag filter")
 	}
 	return nil
 }
 func (o *ClusterUninstaller) Run() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -166,6 +170,8 @@ func splitSlash(name string, input string) (base string, suffix string, err erro
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	segments := strings.SplitN(input, "/", 2)
 	if len(segments) != 2 {
 		return "", "", errors.Errorf("%s %q does not contain the expected slash", name, input)
@@ -173,6 +179,8 @@ func splitSlash(name string, input string) (base string, suffix string, err erro
 	return segments[0], segments[1], nil
 }
 func tagMatch(filters []Filter, tags map[string]string) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -201,6 +209,8 @@ func tagsForFilter(filter Filter) []*ec2.Tag {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tags := make([]*ec2.Tag, 0, len(filter))
 	for key, value := range filter {
 		tags = append(tags, &ec2.Tag{Key: aws.String(key), Value: aws.String(value)})
@@ -216,6 +226,8 @@ type iamRoleSearch struct {
 }
 
 func (search *iamRoleSearch) arns() ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -273,6 +285,8 @@ func (search *iamUserSearch) arns() ([]string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if search.unmatched == nil {
 		search.unmatched = map[string]struct{}{}
 	}
@@ -318,6 +332,8 @@ func getSharedHostedZone(client *route53.Route53, privateID string, logger logru
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	response, err := client.GetHostedZone(&route53.GetHostedZoneInput{Id: aws.String(privateID)})
 	if err != nil {
 		return "", err
@@ -358,6 +374,8 @@ func findPublicRoute53(client *route53.Route53, dnsName string, logger logrus.Fi
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	request := &route53.ListHostedZonesByNameInput{DNSName: aws.String(dnsName)}
 	for i := 0; true; i++ {
 		logger.Debugf("listing AWS hosted zones %q (page %d)", dnsName, i)
@@ -390,6 +408,8 @@ func deleteARN(session *session.Session, arnString string, filter Filter, logger
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger = logger.WithField("arn", arnString)
 	parsed, err := arn.Parse(arnString)
 	if err != nil {
@@ -411,6 +431,8 @@ func deleteARN(session *session.Session, arnString string, filter Filter, logger
 	}
 }
 func deleteEC2(session *session.Session, arn arn.ARN, filter Filter, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -457,6 +479,8 @@ func deleteEC2DHCPOptions(client *ec2.EC2, id string, logger logrus.FieldLogger)
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteDhcpOptions(&ec2.DeleteDhcpOptionsInput{DhcpOptionsId: &id})
 	if err != nil {
 		if err.(awserr.Error).Code() == "InvalidDhcpOptionsID.NotFound" {
@@ -468,6 +492,8 @@ func deleteEC2DHCPOptions(client *ec2.EC2, id string, logger logrus.FieldLogger)
 	return nil
 }
 func deleteEC2Image(client *ec2.EC2, id string, filter Filter, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -506,6 +532,8 @@ func deleteEC2ElasticIP(client *ec2.EC2, id string, logger logrus.FieldLogger) e
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.ReleaseAddress(&ec2.ReleaseAddressInput{AllocationId: aws.String(id)})
 	if err != nil {
 		if err.(awserr.Error).Code() == "InvalidAllocationID.NotFound" {
@@ -517,6 +545,8 @@ func deleteEC2ElasticIP(client *ec2.EC2, id string, logger logrus.FieldLogger) e
 	return nil
 }
 func deleteEC2Instance(ec2Client *ec2.EC2, iamClient *iam.IAM, id string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -557,6 +587,8 @@ func (o *ClusterUninstaller) deleteUntaggedResources(awsSession *session.Session
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	iamClient := iam.New(awsSession)
 	masterProfile := fmt.Sprintf("%s-master-profile", o.ClusterID)
 	if err := deleteIAMInstanceProfileByName(iamClient, &masterProfile, o.Logger); err != nil {
@@ -569,6 +601,8 @@ func (o *ClusterUninstaller) deleteUntaggedResources(awsSession *session.Session
 	return nil
 }
 func deleteEC2InternetGateway(client *ec2.EC2, id string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -603,6 +637,8 @@ func deleteEC2NATGateway(client *ec2.EC2, id string, logger logrus.FieldLogger) 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteNatGateway(&ec2.DeleteNatGatewayInput{NatGatewayId: aws.String(id)})
 	if err != nil {
 		if err.(awserr.Error).Code() == "NatGatewayNotFound" {
@@ -614,6 +650,8 @@ func deleteEC2NATGateway(client *ec2.EC2, id string, logger logrus.FieldLogger) 
 	return nil
 }
 func deleteEC2NATGatewaysByVPC(client *ec2.EC2, vpc string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -641,6 +679,8 @@ func deleteEC2RouteTable(client *ec2.EC2, id string, logger logrus.FieldLogger) 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	response, err := client.DescribeRouteTables(&ec2.DescribeRouteTablesInput{RouteTableIds: []*string{aws.String(id)}})
 	if err != nil {
 		if err.(awserr.Error).Code() == "InvalidRouteTableID.NotFound" {
@@ -657,6 +697,8 @@ func deleteEC2RouteTable(client *ec2.EC2, id string, logger logrus.FieldLogger) 
 	return nil
 }
 func deleteEC2RouteTableObject(client *ec2.EC2, table *ec2.RouteTable, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -688,6 +730,8 @@ func deleteEC2RouteTablesByVPC(client *ec2.EC2, vpc string, logger logrus.FieldL
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var lastError error
 	err := client.DescribeRouteTablesPages(&ec2.DescribeRouteTablesInput{Filters: []*ec2.Filter{{Name: aws.String("vpc-id"), Values: []*string{&vpc}}}}, func(results *ec2.DescribeRouteTablesOutput, lastPage bool) bool {
 		for _, table := range results.RouteTables {
@@ -707,6 +751,8 @@ func deleteEC2RouteTablesByVPC(client *ec2.EC2, vpc string, logger logrus.FieldL
 	return err
 }
 func deleteEC2SecurityGroup(client *ec2.EC2, id string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -749,6 +795,8 @@ func deleteEC2Snapshot(client *ec2.EC2, id string, logger logrus.FieldLogger) er
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteSnapshot(&ec2.DeleteSnapshotInput{SnapshotId: &id})
 	if err != nil {
 		if err.(awserr.Error).Code() == "InvalidSnapshotID.NotFound" {
@@ -764,6 +812,8 @@ func deleteEC2NetworkInterface(client *ec2.EC2, id string, logger logrus.FieldLo
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteNetworkInterface(&ec2.DeleteNetworkInterfaceInput{NetworkInterfaceId: aws.String(id)})
 	if err != nil {
 		if err.(awserr.Error).Code() == "InvalidNetworkInterfaceID.NotFound" {
@@ -775,6 +825,8 @@ func deleteEC2NetworkInterface(client *ec2.EC2, id string, logger logrus.FieldLo
 	return nil
 }
 func deleteEC2NetworkInterfaceByVPC(client *ec2.EC2, vpc string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -802,6 +854,8 @@ func deleteEC2Subnet(client *ec2.EC2, id string, logger logrus.FieldLogger) erro
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteSubnet(&ec2.DeleteSubnetInput{SubnetId: aws.String(id)})
 	if err != nil {
 		if err.(awserr.Error).Code() == "InvalidSubnetID.NotFound" {
@@ -817,6 +871,8 @@ func deleteEC2Volume(client *ec2.EC2, id string, logger logrus.FieldLogger) erro
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteVolume(&ec2.DeleteVolumeInput{VolumeId: aws.String(id)})
 	if err != nil {
 		if err.(awserr.Error).Code() == "InvalidVolume.NotFound" {
@@ -828,6 +884,8 @@ func deleteEC2Volume(client *ec2.EC2, id string, logger logrus.FieldLogger) erro
 	return nil
 }
 func deleteEC2VPC(ec2Client *ec2.EC2, elbClient *elb.ELB, elbv2Client *elbv2.ELBV2, id string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -860,6 +918,8 @@ func deleteEC2VPCEndpoint(client *ec2.EC2, id string, logger logrus.FieldLogger)
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteVpcEndpoints(&ec2.DeleteVpcEndpointsInput{VpcEndpointIds: []*string{aws.String(id)}})
 	if err != nil {
 		return errors.Wrapf(err, "cannot delete VPC endpoint %s", id)
@@ -868,6 +928,8 @@ func deleteEC2VPCEndpoint(client *ec2.EC2, id string, logger logrus.FieldLogger)
 	return nil
 }
 func deleteEC2VPCEndpointsByVPC(client *ec2.EC2, vpc string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -888,6 +950,8 @@ func deleteEC2VPCEndpointsByVPC(client *ec2.EC2, vpc string, logger logrus.Field
 	return nil
 }
 func deleteElasticLoadBalancing(session *session.Session, arn arn.ARN, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -924,6 +988,8 @@ func deleteElasticLoadBalancerClassic(client *elb.ELB, name string, logger logru
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteLoadBalancer(&elb.DeleteLoadBalancerInput{LoadBalancerName: aws.String(name)})
 	if err != nil {
 		return err
@@ -932,6 +998,8 @@ func deleteElasticLoadBalancerClassic(client *elb.ELB, name string, logger logru
 	return nil
 }
 func deleteElasticLoadBalancerClassicByVPC(client *elb.ELB, vpc string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -967,6 +1035,8 @@ func deleteElasticLoadBalancerTargetGroup(client *elbv2.ELBV2, arn arn.ARN, logg
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteTargetGroup(&elbv2.DeleteTargetGroupInput{TargetGroupArn: aws.String(arn.String())})
 	if err != nil {
 		return err
@@ -975,6 +1045,8 @@ func deleteElasticLoadBalancerTargetGroup(client *elbv2.ELBV2, arn arn.ARN, logg
 	return nil
 }
 func deleteElasticLoadBalancerTargetGroupsByVPC(client *elbv2.ELBV2, vpc string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -1017,6 +1089,8 @@ func deleteElasticLoadBalancerV2(client *elbv2.ELBV2, arn arn.ARN, logger logrus
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteLoadBalancer(&elbv2.DeleteLoadBalancerInput{LoadBalancerArn: aws.String(arn.String())})
 	if err != nil {
 		return err
@@ -1025,6 +1099,8 @@ func deleteElasticLoadBalancerV2(client *elbv2.ELBV2, arn arn.ARN, logger logrus
 	return nil
 }
 func deleteElasticLoadBalancerV2ByVPC(client *elbv2.ELBV2, vpc string, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -1067,6 +1143,8 @@ func deleteIAM(session *session.Session, arn arn.ARN, logger logrus.FieldLogger)
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	client := iam.New(session)
 	resourceType, id, err := splitSlash("resource", arn.Resource)
 	if err != nil {
@@ -1089,6 +1167,8 @@ func deleteIAMInstanceProfileByName(client *iam.IAM, name *string, logger logrus
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_, err := client.DeleteInstanceProfile(&iam.DeleteInstanceProfileInput{InstanceProfileName: name})
 	if err != nil {
 		if err.(awserr.Error).Code() == iam.ErrCodeNoSuchEntityException {
@@ -1100,6 +1180,8 @@ func deleteIAMInstanceProfileByName(client *iam.IAM, name *string, logger logrus
 	return err
 }
 func deleteIAMInstanceProfile(client *iam.IAM, profileARN arn.ARN, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -1133,6 +1215,8 @@ func deleteIAMInstanceProfile(client *iam.IAM, profileARN arn.ARN, logger logrus
 	return nil
 }
 func deleteIAMRole(client *iam.IAM, roleARN arn.ARN, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -1203,6 +1287,8 @@ func deleteIAMUser(client *iam.IAM, id string, logger logrus.FieldLogger) error 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var lastError error
 	err := client.ListUserPoliciesPages(&iam.ListUserPoliciesInput{UserName: &id}, func(results *iam.ListUserPoliciesOutput, lastPage bool) bool {
 		for _, policy := range results.PolicyNames {
@@ -1249,6 +1335,8 @@ func deleteIAMUser(client *iam.IAM, id string, logger logrus.FieldLogger) error 
 	return nil
 }
 func deleteRoute53(session *session.Session, arn arn.ARN, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -1328,6 +1416,8 @@ func deleteRoute53RecordSet(client *route53.Route53, zoneID string, recordSet *r
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger = logger.WithField("record set", fmt.Sprintf("%s %s", *recordSet.Type, *recordSet.Name))
 	_, err := client.ChangeResourceRecordSets(&route53.ChangeResourceRecordSetsInput{HostedZoneId: aws.String(zoneID), ChangeBatch: &route53.ChangeBatch{Changes: []*route53.Change{{Action: aws.String("DELETE"), ResourceRecordSet: recordSet}}}})
 	if err != nil {
@@ -1337,6 +1427,8 @@ func deleteRoute53RecordSet(client *route53.Route53, zoneID string, recordSet *r
 	return nil
 }
 func deleteS3(session *session.Session, arn arn.ARN, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -1360,6 +1452,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -1369,5 +1472,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

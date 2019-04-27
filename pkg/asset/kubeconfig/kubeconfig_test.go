@@ -18,6 +18,8 @@ func (t *testCertKey) Key() []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []byte(t.key)
 }
 func (t *testCertKey) Cert() []byte {
@@ -25,9 +27,13 @@ func (t *testCertKey) Cert() []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []byte(t.cert)
 }
 func TestKubeconfigGenerate(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

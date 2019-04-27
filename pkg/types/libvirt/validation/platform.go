@@ -11,6 +11,8 @@ func ValidatePlatform(p *libvirt.Platform, fldPath *field.Path) field.ErrorList 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if err := validate.URI(p.URI); err != nil {
 		allErrs = append(allErrs, field.Invalid(fldPath.Child("uri"), p.URI, err.Error()))

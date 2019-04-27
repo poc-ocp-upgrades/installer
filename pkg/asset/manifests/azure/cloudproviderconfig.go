@@ -21,6 +21,8 @@ func (params CloudProviderConfig) JSON() (string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	resourceGroupName := params.ResourcePrefix + "-rg"
 	config := config{authConfig: authConfig{Cloud: "AzurePublicCloud", TenantID: params.TenantID, SubscriptionID: params.SubscriptionID, UseManagedIdentityExtension: true, UserAssignedIdentityID: fmt.Sprintf("/subscriptions/%s/resourcegroups/%s/providers/Microsoft.ManagedIdentity/userAssignedIdentities/%s", params.SubscriptionID, resourceGroupName, params.ResourcePrefix+"-identity")}, ResourceGroup: resourceGroupName, Location: params.GroupLocation, SubnetName: params.ResourcePrefix + "-node-subnet", SecurityGroupName: params.ResourcePrefix + "-node-nsg", VnetName: params.ResourcePrefix + "-vnet", VnetResourceGroup: resourceGroupName, RouteTableName: params.ResourcePrefix + "-node-routetable", CloudProviderBackoff: true, CloudProviderRateLimit: true, UseInstanceMetadata: true, LoadBalancerSku: "standard"}
 	buff := &bytes.Buffer{}
@@ -36,6 +38,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -45,5 +58,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

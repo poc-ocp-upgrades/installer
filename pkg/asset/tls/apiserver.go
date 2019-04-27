@@ -18,9 +18,13 @@ func (c *KubeAPIServerToKubeletSignerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *KubeAPIServerToKubeletSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -29,6 +33,8 @@ func (c *KubeAPIServerToKubeletSignerCertKey) Generate(parents asset.Parents) er
 	return c.SelfSignedCertKey.Generate(cfg, "kube-apiserver-to-kubelet-signer")
 }
 func (c *KubeAPIServerToKubeletSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -45,9 +51,13 @@ func (a *KubeAPIServerToKubeletCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerToKubeletSignerCertKey{}}
 }
 func (a *KubeAPIServerToKubeletCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -64,6 +74,8 @@ func (a *KubeAPIServerToKubeletCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (kube-apiserver-to-kubelet-ca-bundle)"
 }
 
@@ -76,9 +88,13 @@ func (a *KubeAPIServerToKubeletClientCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerToKubeletSignerCertKey{}}
 }
 func (a *KubeAPIServerToKubeletClientCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -89,6 +105,8 @@ func (a *KubeAPIServerToKubeletClientCertKey) Generate(dependencies asset.Parent
 	return a.SignedCertKey.Generate(cfg, ca, "kube-apiserver-to-kubelet-client", DoNotAppendParent)
 }
 func (a *KubeAPIServerToKubeletClientCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -105,9 +123,13 @@ func (c *KubeAPIServerLocalhostSignerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *KubeAPIServerLocalhostSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -116,6 +138,8 @@ func (c *KubeAPIServerLocalhostSignerCertKey) Generate(parents asset.Parents) er
 	return c.SelfSignedCertKey.Generate(cfg, "kube-apiserver-localhost-signer")
 }
 func (c *KubeAPIServerLocalhostSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -132,9 +156,13 @@ func (a *KubeAPIServerLocalhostCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerLocalhostSignerCertKey{}}
 }
 func (a *KubeAPIServerLocalhostCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -151,6 +179,8 @@ func (a *KubeAPIServerLocalhostCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (kube-apiserver-localhost-ca-bundle)"
 }
 
@@ -163,9 +193,13 @@ func (a *KubeAPIServerLocalhostServerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerLocalhostSignerCertKey{}}
 }
 func (a *KubeAPIServerLocalhostServerCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -176,6 +210,8 @@ func (a *KubeAPIServerLocalhostServerCertKey) Generate(dependencies asset.Parent
 	return a.SignedCertKey.Generate(cfg, ca, "kube-apiserver-localhost-server", AppendParent)
 }
 func (a *KubeAPIServerLocalhostServerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -192,9 +228,13 @@ func (c *KubeAPIServerServiceNetworkSignerCertKey) Dependencies() []asset.Asset 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *KubeAPIServerServiceNetworkSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -203,6 +243,8 @@ func (c *KubeAPIServerServiceNetworkSignerCertKey) Generate(parents asset.Parent
 	return c.SelfSignedCertKey.Generate(cfg, "kube-apiserver-service-network-signer")
 }
 func (c *KubeAPIServerServiceNetworkSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -219,9 +261,13 @@ func (a *KubeAPIServerServiceNetworkCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerServiceNetworkSignerCertKey{}}
 }
 func (a *KubeAPIServerServiceNetworkCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -238,6 +284,8 @@ func (a *KubeAPIServerServiceNetworkCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (kube-apiserver-service-network-ca-bundle)"
 }
 
@@ -250,9 +298,13 @@ func (a *KubeAPIServerServiceNetworkServerCertKey) Dependencies() []asset.Asset 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerServiceNetworkSignerCertKey{}, &installconfig.InstallConfig{}}
 }
 func (a *KubeAPIServerServiceNetworkServerCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -272,6 +324,8 @@ func (a *KubeAPIServerServiceNetworkServerCertKey) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (kube-apiserver-service-network-server)"
 }
 
@@ -284,9 +338,13 @@ func (c *KubeAPIServerLBSignerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *KubeAPIServerLBSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -295,6 +353,8 @@ func (c *KubeAPIServerLBSignerCertKey) Generate(parents asset.Parents) error {
 	return c.SelfSignedCertKey.Generate(cfg, "kube-apiserver-lb-signer")
 }
 func (c *KubeAPIServerLBSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -311,9 +371,13 @@ func (a *KubeAPIServerLBCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerLBSignerCertKey{}}
 }
 func (a *KubeAPIServerLBCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -330,6 +394,8 @@ func (a *KubeAPIServerLBCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (kube-apiserver-lb-ca-bundle)"
 }
 
@@ -342,9 +408,13 @@ func (a *KubeAPIServerExternalLBServerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerLBSignerCertKey{}, &installconfig.InstallConfig{}}
 }
 func (a *KubeAPIServerExternalLBServerCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -356,6 +426,8 @@ func (a *KubeAPIServerExternalLBServerCertKey) Generate(dependencies asset.Paren
 	return a.SignedCertKey.Generate(cfg, ca, "kube-apiserver-lb-server", AppendParent)
 }
 func (a *KubeAPIServerExternalLBServerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -372,9 +444,13 @@ func (a *KubeAPIServerInternalLBServerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerLBSignerCertKey{}, &installconfig.InstallConfig{}}
 }
 func (a *KubeAPIServerInternalLBServerCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -386,6 +462,8 @@ func (a *KubeAPIServerInternalLBServerCertKey) Generate(dependencies asset.Paren
 	return a.SignedCertKey.Generate(cfg, ca, "kube-apiserver-internal-lb-server", AppendParent)
 }
 func (a *KubeAPIServerInternalLBServerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -402,9 +480,13 @@ func (a *KubeAPIServerCompleteCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeAPIServerLocalhostCABundle{}, &KubeAPIServerServiceNetworkCABundle{}, &KubeAPIServerLBCABundle{}}
 }
 func (a *KubeAPIServerCompleteCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -421,6 +503,8 @@ func (a *KubeAPIServerCompleteCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (kube-apiserver-complete-server-ca-bundle)"
 }
 
@@ -433,9 +517,13 @@ func (a *KubeAPIServerCompleteClientCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&AdminKubeConfigCABundle{}, &KubeletClientCABundle{}, &KubeControlPlaneCABundle{}, &KubeAPIServerToKubeletCABundle{}, &KubeletBootstrapCABundle{}}
 }
 func (a *KubeAPIServerCompleteClientCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -448,6 +536,8 @@ func (a *KubeAPIServerCompleteClientCABundle) Generate(deps asset.Parents) error
 	return a.CertBundle.Generate("kube-apiserver-complete-client-ca-bundle", certs...)
 }
 func (a *KubeAPIServerCompleteClientCABundle) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

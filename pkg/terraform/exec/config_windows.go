@@ -18,6 +18,8 @@ func configDir() (string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	dir, err := homeDir()
 	if err != nil {
 		return "", err
@@ -25,6 +27,8 @@ func configDir() (string, error) {
 	return filepath.Join(dir, "terraform.d"), nil
 }
 func homeDir() (string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -16,9 +16,13 @@ func NewValidValuesFetcher() ValidValuesFetcher {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return realValidValuesFetcher{}
 }
 func (f realValidValuesFetcher) GetCloudNames() ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -36,6 +40,8 @@ func (f realValidValuesFetcher) GetCloudNames() ([]string, error) {
 	return cloudNames, nil
 }
 func (f realValidValuesFetcher) GetRegionNames(cloud string) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -65,6 +71,8 @@ func (f realValidValuesFetcher) GetNetworkNames(cloud string) ([]string, error) 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	opts := &clientconfig.ClientOpts{Cloud: cloud}
 	conn, err := clientconfig.NewServiceClient("network", opts)
 	if err != nil {
@@ -90,6 +98,8 @@ func (f realValidValuesFetcher) GetFlavorNames(cloud string) ([]string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	opts := &clientconfig.ClientOpts{Cloud: cloud}
 	conn, err := clientconfig.NewServiceClient("compute", opts)
 	if err != nil {
@@ -111,6 +121,8 @@ func (f realValidValuesFetcher) GetFlavorNames(cloud string) ([]string, error) {
 	return flavorNames, nil
 }
 func (f realValidValuesFetcher) GetNetworkExtensionsAliases(cloud string) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

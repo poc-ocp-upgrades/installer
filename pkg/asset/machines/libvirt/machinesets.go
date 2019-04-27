@@ -15,6 +15,8 @@ func MachineSets(clusterID string, config *types.InstallConfig, pool *types.Mach
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if configPlatform := config.Platform.Name(); configPlatform != libvirt.Name {
 		return nil, fmt.Errorf("non-Libvirt configuration: %q", configPlatform)
 	}

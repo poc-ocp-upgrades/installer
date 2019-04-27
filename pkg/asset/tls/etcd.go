@@ -15,9 +15,13 @@ func (a *EtcdCA) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (a *EtcdCA) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -26,6 +30,8 @@ func (a *EtcdCA) Generate(dependencies asset.Parents) error {
 	return a.SelfSignedCertKey.Generate(cfg, "etcd-client-ca")
 }
 func (a *EtcdCA) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -42,9 +48,13 @@ func (a *EtcdClientCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&EtcdCA{}}
 }
 func (a *EtcdClientCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -55,6 +65,8 @@ func (a *EtcdClientCertKey) Generate(dependencies asset.Parents) error {
 	return a.SignedCertKey.Generate(cfg, etcdCA, "etcd-client", DoNotAppendParent)
 }
 func (a *EtcdClientCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -71,9 +83,13 @@ func (c *EtcdSignerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *EtcdSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -82,6 +98,8 @@ func (c *EtcdSignerCertKey) Generate(parents asset.Parents) error {
 	return c.SelfSignedCertKey.Generate(cfg, "etcd-signer")
 }
 func (c *EtcdSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -98,9 +116,13 @@ func (a *EtcdCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&EtcdSignerCertKey{}}
 }
 func (a *EtcdCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -117,6 +139,8 @@ func (a *EtcdCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (etcd-ca-bundle)"
 }
 
@@ -129,9 +153,13 @@ func (a *EtcdSignerClientCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&EtcdSignerCertKey{}}
 }
 func (a *EtcdSignerClientCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -142,6 +170,8 @@ func (a *EtcdSignerClientCertKey) Generate(dependencies asset.Parents) error {
 	return a.SignedCertKey.Generate(cfg, ca, "etcd-signer-client", DoNotAppendParent)
 }
 func (a *EtcdSignerClientCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

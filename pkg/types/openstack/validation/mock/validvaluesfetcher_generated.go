@@ -20,6 +20,8 @@ func NewMockValidValuesFetcher(ctrl *gomock.Controller) *MockValidValuesFetcher 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mock := &MockValidValuesFetcher{ctrl: ctrl}
 	mock.recorder = &MockValidValuesFetcherMockRecorder{mock}
 	return mock
@@ -29,9 +31,13 @@ func (m *MockValidValuesFetcher) EXPECT() *MockValidValuesFetcherMockRecorder {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return m.recorder
 }
 func (m *MockValidValuesFetcher) GetCloudNames() ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -47,10 +53,14 @@ func (mr *MockValidValuesFetcherMockRecorder) GetCloudNames() *gomock.Call {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCloudNames", reflect.TypeOf((*MockValidValuesFetcher)(nil).GetCloudNames))
 }
 func (m *MockValidValuesFetcher) GetRegionNames(cloud string) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -66,10 +76,14 @@ func (mr *MockValidValuesFetcherMockRecorder) GetRegionNames(cloud interface{}) 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRegionNames", reflect.TypeOf((*MockValidValuesFetcher)(nil).GetRegionNames), cloud)
 }
 func (m *MockValidValuesFetcher) GetNetworkNames(cloud string) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -85,10 +99,14 @@ func (mr *MockValidValuesFetcherMockRecorder) GetNetworkNames(cloud interface{})
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNetworkNames", reflect.TypeOf((*MockValidValuesFetcher)(nil).GetNetworkNames), cloud)
 }
 func (m *MockValidValuesFetcher) GetFlavorNames(cloud string) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -104,10 +122,14 @@ func (mr *MockValidValuesFetcherMockRecorder) GetFlavorNames(cloud interface{}) 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetFlavorNames", reflect.TypeOf((*MockValidValuesFetcher)(nil).GetFlavorNames), cloud)
 }
 func (m *MockValidValuesFetcher) GetNetworkExtensionsAliases(cloud string) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -123,6 +145,8 @@ func (mr *MockValidValuesFetcherMockRecorder) GetNetworkExtensionsAliases(cloud 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetNetworkExtensionsAliases", reflect.TypeOf((*MockValidValuesFetcher)(nil).GetNetworkExtensionsAliases), cloud)
 }
@@ -131,6 +155,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -140,5 +175,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

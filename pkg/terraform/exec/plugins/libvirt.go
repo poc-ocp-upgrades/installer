@@ -10,6 +10,8 @@ func init() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	exec := func() {
 		defer libvirt.CleanupLibvirtConnections()
 		plugin.Serve(&plugin.ServeOpts{ProviderFunc: libvirt.Provider})

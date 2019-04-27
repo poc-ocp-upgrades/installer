@@ -13,6 +13,8 @@ func TestSelfSignedCertificate(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	key, err := PrivateKey()
 	if err != nil {
 		t.Fatalf("Failed to generate Private Key: %v", err)
@@ -32,6 +34,8 @@ func TestSelfSignedCertificate(t *testing.T) {
 	}
 }
 func TestSignedCertificate(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

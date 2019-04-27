@@ -11,6 +11,8 @@ func TestCloudProviderConfig(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	clusterName := "test-cluster"
 	platform := &vspheretypes.Platform{VCenter: "test-name", Username: "test-username", Password: "test-password", Datacenter: "test-datacenter", DefaultDatastore: "test-datastore"}
 	expectedConfig := `[Global]

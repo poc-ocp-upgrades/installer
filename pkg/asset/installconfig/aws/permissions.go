@@ -15,6 +15,8 @@ func ValidateCreds(ssn *session.Session) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	creds, err := ssn.Config.Credentials.Get()
 	if err != nil {
 		return errors.Wrap(err, "getting creds from session")

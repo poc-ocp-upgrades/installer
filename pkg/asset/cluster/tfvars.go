@@ -41,6 +41,8 @@ func (t *TerraformVariables) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return tfvarsAssetName
 }
 func (t *TerraformVariables) Dependencies() []asset.Asset {
@@ -48,9 +50,13 @@ func (t *TerraformVariables) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&installconfig.ClusterID{}, &installconfig.InstallConfig{}, new(rhcos.Image), &bootstrap.Bootstrap{}, &machine.Master{}, &machines.Master{}, &machines.Worker{}}
 }
 func (t *TerraformVariables) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -133,9 +139,13 @@ func (t *TerraformVariables) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return t.FileList
 }
 func (t *TerraformVariables) Load(f asset.FileFetcher) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

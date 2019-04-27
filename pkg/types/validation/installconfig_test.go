@@ -22,9 +22,13 @@ func validInstallConfig() *types.InstallConfig {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &types.InstallConfig{TypeMeta: metav1.TypeMeta{APIVersion: types.InstallConfigVersion}, ObjectMeta: metav1.ObjectMeta{Name: "test-cluster"}, BaseDomain: "test-domain", Networking: &types.Networking{NetworkType: "OpenShiftSDN", MachineCIDR: ipnet.MustParseCIDR("10.0.0.0/16"), ServiceNetwork: []ipnet.IPNet{*ipnet.MustParseCIDR("172.30.0.0/16")}, ClusterNetwork: []types.ClusterNetworkEntry{{CIDR: *ipnet.MustParseCIDR("192.168.1.0/24"), HostPrefix: 28}}}, ControlPlane: validMachinePool("master"), Compute: []types.MachinePool{*validMachinePool("worker")}, Platform: types.Platform{AWS: validAWSPlatform()}, PullSecret: `{"auths":{"example.com":{"auth":"authorization value"}}}`}
 }
 func validAWSPlatform() *aws.Platform {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -36,6 +40,8 @@ func validLibvirtPlatform() *libvirt.Platform {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &libvirt.Platform{URI: "qemu+tcp://192.168.122.1/system", Network: &libvirt.Network{IfName: "tt0"}}
 }
 func validVSpherePlatform() *vsphere.Platform {
@@ -43,9 +49,13 @@ func validVSpherePlatform() *vsphere.Platform {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &vsphere.Platform{VCenter: "test-server", Username: "test-username", Password: "test-password", Datacenter: "test-datacenter", DefaultDatastore: "test-datastore"}
 }
 func TestValidateInstallConfig(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

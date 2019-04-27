@@ -38,6 +38,8 @@ func (o *ClusterUninstaller) Run() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	deleteFuncs := map[string]deleteFunc{}
 	populateDeleteFuncs(deleteFuncs)
 	returnChannel := make(chan string)
@@ -58,6 +60,8 @@ func deleteRunner(deleteFuncName string, dFunction deleteFunc, opts *clientconfi
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	backoffSettings := wait.Backoff{Duration: time.Second * 10, Factor: 1.3, Steps: 100}
 	err := wait.ExponentialBackoff(backoffSettings, func() (bool, error) {
 		return dFunction(opts, filter, logger)
@@ -74,6 +78,8 @@ func populateDeleteFuncs(funcs map[string]deleteFunc) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	funcs["deleteServers"] = deleteServers
 	funcs["deleteTrunks"] = deleteTrunks
 	funcs["deletePorts"] = deletePorts
@@ -84,6 +90,8 @@ func populateDeleteFuncs(funcs map[string]deleteFunc) {
 	funcs["deleteContainers"] = deleteContainers
 }
 func filterObjects(osObjects []ObjectWithTags, filters Filter) []ObjectWithTags {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -121,6 +129,8 @@ func filterTags(filters Filter) []string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tags := []string{}
 	for k, v := range filters {
 		tags = append(tags, strings.Join([]string{k, v}, "="))
@@ -128,6 +138,8 @@ func filterTags(filters Filter) []string {
 	return tags
 }
 func deleteServers(opts *clientconfig.ClientOpts, filter Filter, logger logrus.FieldLogger) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -166,6 +178,8 @@ func deleteServers(opts *clientconfig.ClientOpts, filter Filter, logger logrus.F
 	return len(filteredServers) == 0, nil
 }
 func deletePorts(opts *clientconfig.ClientOpts, filter Filter, logger logrus.FieldLogger) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -222,6 +236,8 @@ func deleteSecurityGroups(opts *clientconfig.ClientOpts, filter Filter, logger l
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger.Debug("Deleting openstack security-groups")
 	defer logger.Debugf("Exiting deleting openstack security-groups")
 	conn, err := clientconfig.NewServiceClient("network", opts)
@@ -251,6 +267,8 @@ func deleteSecurityGroups(opts *clientconfig.ClientOpts, filter Filter, logger l
 	return len(allGroups) == 0, nil
 }
 func deleteRouters(opts *clientconfig.ClientOpts, filter Filter, logger logrus.FieldLogger) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -322,6 +340,8 @@ func deleteSubnets(opts *clientconfig.ClientOpts, filter Filter, logger logrus.F
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger.Debug("Deleting openstack subnets")
 	defer logger.Debugf("Exiting deleting openstack subnets")
 	conn, err := clientconfig.NewServiceClient("network", opts)
@@ -355,6 +375,8 @@ func deleteNetworks(opts *clientconfig.ClientOpts, filter Filter, logger logrus.
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger.Debug("Deleting openstack networks")
 	defer logger.Debugf("Exiting deleting openstack networks")
 	conn, err := clientconfig.NewServiceClient("network", opts)
@@ -384,6 +406,8 @@ func deleteNetworks(opts *clientconfig.ClientOpts, filter Filter, logger logrus.
 	return len(allNetworks) == 0, nil
 }
 func deleteContainers(opts *clientconfig.ClientOpts, filter Filter, logger logrus.FieldLogger) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -451,6 +475,8 @@ func deleteTrunks(opts *clientconfig.ClientOpts, filter Filter, logger logrus.Fi
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger.Debug("Deleting openstack trunks")
 	defer logger.Debugf("Exiting deleting openstack trunks")
 	conn, err := clientconfig.NewServiceClient("network", opts)
@@ -480,6 +506,8 @@ func deleteTrunks(opts *clientconfig.ClientOpts, filter Filter, logger logrus.Fi
 	return len(allTrunks) == 0, nil
 }
 func New(logger logrus.FieldLogger, metadata *types.ClusterMetadata) (destroy.Destroyer, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

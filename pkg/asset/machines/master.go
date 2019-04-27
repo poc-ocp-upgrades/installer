@@ -60,9 +60,13 @@ func (m *Master) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Master Machines"
 }
 func (m *Master) Dependencies() []asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -74,11 +78,15 @@ func awsDefaultMasterMachineType(installconfig *installconfig.InstallConfig) str
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	region := installconfig.Config.Platform.AWS.Region
 	instanceClass := awsdefaults.InstanceClass(region)
 	return fmt.Sprintf("%s.xlarge", instanceClass)
 }
 func (m *Master) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -179,6 +187,8 @@ func (m *Master) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	files := make([]*asset.File, 0, 1+len(m.MachineConfigFiles)+len(m.MachineFiles))
 	if m.UserDataFile != nil {
 		files = append(files, m.UserDataFile)
@@ -188,6 +198,8 @@ func (m *Master) Files() []*asset.File {
 	return files
 }
 func (m *Master) Load(f asset.FileFetcher) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -216,6 +228,8 @@ func (m *Master) Machines() ([]machineapi.Machine, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	scheme := runtime.NewScheme()
 	awsapi.AddToScheme(scheme)
 	azureapi.AddToScheme(scheme)
@@ -239,6 +253,8 @@ func (m *Master) Machines() ([]machineapi.Machine, error) {
 	return machines, nil
 }
 func IsMachineManifest(file *asset.File) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

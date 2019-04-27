@@ -23,6 +23,8 @@ func Apply(dir string, platform string, extraArgs ...string) (path string, err e
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	err = unpackAndInit(dir, platform)
 	if err != nil {
 		return "", err
@@ -43,6 +45,8 @@ func Apply(dir string, platform string, extraArgs ...string) (path string, err e
 	return sf, nil
 }
 func Destroy(dir string, platform string, extraArgs ...string) (err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -70,6 +74,8 @@ func unpack(dir string, platform string) (err error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	err = data.Unpack(dir, platform)
 	if err != nil {
 		return err
@@ -81,6 +87,8 @@ func unpack(dir string, platform string) (err error) {
 	return nil
 }
 func unpackAndInit(dir string, platform string) (err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -106,6 +114,8 @@ func unpackAndInit(dir string, platform string) (err error) {
 	return nil
 }
 func setupEmbeddedPlugins(dir string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

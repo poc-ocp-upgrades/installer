@@ -47,6 +47,8 @@ func (c *installConf) readInstallConf(filePath string) *installConf {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	yamlFile, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		log.Printf("yamlFile.Get err   #%v ", err)
@@ -58,6 +60,8 @@ func (c *installConf) readInstallConf(filePath string) *installConf {
 	return c
 }
 func ValidateInstallConfig(filePath string, expectedData DataToValidate) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -12,9 +12,13 @@ func validPlatform() *libvirt.Platform {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &libvirt.Platform{URI: "qemu+tcp://192.168.122.1/system", Network: &libvirt.Network{IfName: "tt0"}}
 }
 func TestValidatePlatform(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

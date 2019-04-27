@@ -25,9 +25,13 @@ func (a *sshPublicKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return nil
 }
 func readSSHKey(path string) (string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -44,6 +48,8 @@ func readSSHKey(path string) (string, error) {
 	return key, nil
 }
 func (a *sshPublicKey) Generate(asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -89,6 +95,8 @@ func (a *sshPublicKey) Generate(asset.Parents) error {
 	return nil
 }
 func (a sshPublicKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

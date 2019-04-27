@@ -14,6 +14,8 @@ func TestFetchByName(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tests := []struct {
 		name		string
 		files		map[string][]byte
@@ -46,6 +48,8 @@ func TestFetchByName(t *testing.T) {
 	}
 }
 func TestFetchByPattern(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

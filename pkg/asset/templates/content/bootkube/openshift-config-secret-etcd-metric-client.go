@@ -20,6 +20,8 @@ func (t *OpenshiftConfigSecretEtcdMetricClient) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (t *OpenshiftConfigSecretEtcdMetricClient) Name() string {
@@ -27,9 +29,13 @@ func (t *OpenshiftConfigSecretEtcdMetricClient) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "OpenshiftConfigSecretEtcdMetricClient"
 }
 func (t *OpenshiftConfigSecretEtcdMetricClient) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -47,9 +53,13 @@ func (t *OpenshiftConfigSecretEtcdMetricClient) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return t.FileList
 }
 func (t *OpenshiftConfigSecretEtcdMetricClient) Load(f asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -11,9 +11,13 @@ func testCommon(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	t.Run("APIAvailable", testAPIAvailable)
 }
 func testAPIAvailable(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -26,6 +30,8 @@ func testAPIAvailable(t *testing.T) {
 	t.Log("API server is available.")
 }
 func apiAvailable(t *testing.T) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

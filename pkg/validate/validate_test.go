@@ -13,6 +13,8 @@ func TestClusterName(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	maxSizeName := strings.Repeat("123456789.", 25) + "123"
 	cases := []struct {
 		name		string
@@ -31,6 +33,8 @@ func TestClusterName(t *testing.T) {
 	}
 }
 func TestSubnetCIDR(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -59,6 +63,8 @@ func TestDomainName_AcceptingTrailingDot(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
 		domain	string
 		valid	bool
@@ -79,6 +85,8 @@ func TestDomainName_RejectingTrailingDot(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
 		domain	string
 		valid	bool
@@ -95,6 +103,8 @@ func TestDomainName_RejectingTrailingDot(t *testing.T) {
 	}
 }
 func TestDoCIDRsOverlap(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -124,6 +134,8 @@ func TestImagePullSecret(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
 		name	string
 		secret	string
@@ -145,6 +157,8 @@ func TestSSHPublicKey(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
 		name	string
 		key	string
@@ -162,6 +176,8 @@ func TestSSHPublicKey(t *testing.T) {
 	}
 }
 func TestURI(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

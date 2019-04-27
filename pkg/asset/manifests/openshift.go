@@ -34,6 +34,8 @@ func (o *Openshift) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Openshift Manifests"
 }
 func (o *Openshift) Dependencies() []asset.Asset {
@@ -41,9 +43,13 @@ func (o *Openshift) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&installconfig.InstallConfig{}, &installconfig.ClusterID{}, &password.KubeadminPassword{}, &openshift.BindingDiscovery{}, &openshift.CloudCredsSecret{}, &openshift.KubeadminPasswordSecret{}, &openshift.RoleCloudCredsSecretReader{}}
 }
 func (o *Openshift) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -115,9 +121,13 @@ func (o *Openshift) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return o.FileList
 }
 func (o *Openshift) Load(f asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

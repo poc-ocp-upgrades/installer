@@ -26,11 +26,15 @@ func TestMain(m *testing.M) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	flag.BoolVar(&runClusterTests, "cluster", false, "run cluster tests (default false)")
 	flag.Parse()
 	os.Exit(m.Run())
 }
 func Test(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -41,6 +45,8 @@ func Test(t *testing.T) {
 	}
 }
 func newClient(t *testing.T) (*kubernetes.Clientset, clientcmd.ClientConfig) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -66,6 +72,8 @@ func stopped(done <-chan struct{}) bool {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	select {
 	case <-done:
 		return true
@@ -74,6 +82,8 @@ func stopped(done <-chan struct{}) bool {
 	}
 }
 func sleepOrDone(sleep time.Duration, done <-chan struct{}) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -93,6 +103,8 @@ func timeout(d time.Duration) <-chan struct{} {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	t := time.NewTimer(d)
 	c := make(chan struct{})
 	go func() {
@@ -102,6 +114,8 @@ func timeout(d time.Duration) <-chan struct{} {
 	return c
 }
 func retry(r retriable, t *testing.T, interval, max time.Duration) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

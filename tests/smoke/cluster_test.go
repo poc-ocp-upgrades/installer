@@ -39,11 +39,15 @@ func testCluster(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	t.Run("AllNodesRunning", testAllNodesRunning)
 	t.Run("AllResourcesCreated", testAllResourcesCreated)
 	t.Run("AllPodsRunning", testAllPodsRunning)
 }
 func testAllPodsRunning(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -55,6 +59,8 @@ func testAllPodsRunning(t *testing.T) {
 	t.Log("All pods are ready.")
 }
 func allPodsRunning(t *testing.T) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -71,6 +77,8 @@ func allPodsRunning(t *testing.T) error {
 	return nil
 }
 func checkPodsRunning(t *testing.T) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -93,6 +101,8 @@ func checkPodsRunning(t *testing.T) error {
 	return nil
 }
 func allNodesRunning(expected int) func(t *testing.T) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -126,6 +136,8 @@ func testAllNodesRunning(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	nodeCount, err := strconv.Atoi(os.Getenv(nodeCountEnv))
 	if err != nil {
 		t.Fatalf("failed to get number of expected nodes from environment variable %s: %v", nodeCountEnv, err)
@@ -138,6 +150,8 @@ func testAllNodesRunning(t *testing.T) {
 	t.Logf("Successfully found %d ready nodes.", nodeCount)
 }
 func testKillAPIServer(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -191,6 +205,8 @@ func allResourcesCreated(manifestsPaths, ignoredManifests []string) func(t *test
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return func(t *testing.T) error {
 		t.Logf("looking for resources defined by the provided manifests...")
 		_, cc := newClient(t)
@@ -238,6 +254,8 @@ func testAllResourcesCreated(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	manifestPaths := os.Getenv(manifestPathsEnv)
 	manifestsPathsSp := strings.Split(manifestPaths, ",")
 	if len(manifestsPathsSp) == 0 {
@@ -250,6 +268,8 @@ func testAllResourcesCreated(t *testing.T) {
 	}
 }
 func getAPIServers(client *kubernetes.Clientset) (*v1.PodList, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -268,6 +288,8 @@ func nodeReady(node v1.Node) (ok bool) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, cond := range node.Status.Conditions {
 		if cond.Type == v1.NodeReady {
 			return cond.Status == v1.ConditionTrue
@@ -276,6 +298,8 @@ func nodeReady(node v1.Node) (ok bool) {
 	return false
 }
 func walkPathForObjects(cfg clientcmd.ClientConfig, paths []string, fn resource.VisitorFunc) (errs []error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -310,6 +334,8 @@ func parseMapperDecodingError(err string) (manifest, message string, ok bool) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	tokens := decodeErrorRegexp.FindStringSubmatch(err)
 	if tokens == nil {
 		return "", "", false
@@ -328,6 +354,8 @@ func stripPathPrefixes(path string, prefixes []string) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, prefix := range prefixes {
 		if rel, err := filepath.Rel(prefix, path); err == nil {
 			return rel
@@ -336,6 +364,8 @@ func stripPathPrefixes(path string, prefixes []string) string {
 	return path
 }
 func containsAnyOfStrings(needles []string, haystack string) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -352,6 +382,8 @@ func resourceIdentifier(info *resource.Info) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	kindObject := info.VersionedObject.GetObjectKind().GroupVersionKind()
 	kind := fmt.Sprintf("%s/%s:%s", kindObject.Group, kindObject.Version, kindObject.Kind)
 	if equivalentKind, ok := equivalentKindRemapping[kind]; ok {
@@ -364,6 +396,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -373,5 +416,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

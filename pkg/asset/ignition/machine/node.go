@@ -13,6 +13,8 @@ func pointerIgnitionConfig(installConfig *types.InstallConfig, rootCA []byte, ro
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &ignition.Config{Ignition: ignition.Ignition{Version: ignition.MaxVersion.String(), Config: ignition.IgnitionConfig{Append: []ignition.ConfigReference{{Source: func() *url.URL {
 		return &url.URL{Scheme: "https", Host: fmt.Sprintf("api.%s:22623", installConfig.ClusterDomain()), Path: fmt.Sprintf("/config/%s", role)}
 	}().String()}}}, Security: ignition.Security{TLS: ignition.TLS{CertificateAuthorities: []ignition.CaReference{{Source: dataurl.EncodeBytes(rootCA)}}}}}}

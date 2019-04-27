@@ -21,6 +21,8 @@ func (k *kubeconfig) generate(ca tls.CertInterface, clientCertKey tls.CertKeyInt
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	k.Config = &clientcmd.Config{Clusters: []clientcmd.NamedCluster{{Name: cluster, Cluster: clientcmd.Cluster{Server: apiURL, CertificateAuthorityData: ca.Cert()}}}, AuthInfos: []clientcmd.NamedAuthInfo{{Name: userName, AuthInfo: clientcmd.AuthInfo{ClientCertificateData: clientCertKey.Cert(), ClientKeyData: clientCertKey.Key()}}}, Contexts: []clientcmd.NamedContext{{Name: userName, Context: clientcmd.Context{Cluster: cluster, AuthInfo: userName}}}, CurrentContext: userName}
 	data, err := yaml.Marshal(k.Config)
 	if err != nil {
@@ -34,12 +36,16 @@ func (k *kubeconfig) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if k.File != nil {
 		return []*asset.File{k.File}
 	}
 	return []*asset.File{}
 }
 func (k *kubeconfig) load(f asset.FileFetcher, name string) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -63,9 +69,13 @@ func getExtAPIServerURL(ic *types.InstallConfig) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("https://api.%s:6443", ic.ClusterDomain())
 }
 func getIntAPIServerURL(ic *types.InstallConfig) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

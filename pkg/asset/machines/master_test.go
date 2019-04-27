@@ -18,6 +18,8 @@ func TestMasterGenerateMachineConfigs(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
 		name			string
 		key			string

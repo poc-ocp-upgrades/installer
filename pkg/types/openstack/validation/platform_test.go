@@ -15,9 +15,13 @@ func validPlatform() *openstack.Platform {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &openstack.Platform{Region: "test-region", Cloud: "test-cloud", ExternalNetwork: "test-network", FlavorName: "test-flavor"}
 }
 func TestValidatePlatform(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

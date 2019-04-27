@@ -25,6 +25,8 @@ func main() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	flag.CommandLine.Parse([]string{})
 	flag.CommandLine.Set("stderrthreshold", "4")
 	if len(os.Args) > 0 {
@@ -42,6 +44,8 @@ func installerMain() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	rootCmd := newRootCmd()
 	for _, subCmd := range []*cobra.Command{newCreateCmd(), newDestroyCmd(), newWaitForCmd(), newGatherCmd(), newVersionCmd(), newGraphCmd(), newCompletionCmd()} {
 		rootCmd.AddCommand(subCmd)
@@ -55,12 +59,16 @@ func newRootCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := &cobra.Command{Use: "openshift-install", Short: "Creates OpenShift clusters", Long: "", PersistentPreRun: runRootCmd, SilenceErrors: true, SilenceUsage: true}
 	cmd.PersistentFlags().StringVar(&rootOpts.dir, "dir", ".", "assets directory")
 	cmd.PersistentFlags().StringVar(&rootOpts.logLevel, "log-level", "info", "log level (e.g. \"debug | info | warn | error\")")
 	return cmd
 }
 func runRootCmd(cmd *cobra.Command, args []string) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

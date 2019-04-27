@@ -10,6 +10,8 @@ func ValidatePlatform(p *azure.Platform, fldPath *field.Path) field.ErrorList {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if p.Region == "" {
 		allErrs = append(allErrs, field.Required(fldPath.Child("region"), "region should be set to one of the supported Azure regions"))

@@ -11,11 +11,15 @@ func defaultPlatform() *libvirt.Platform {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	n := &libvirt.Network{}
 	SetNetworkDefaults(n)
 	return &libvirt.Platform{URI: DefaultURI, Network: n}
 }
 func TestSetPlatformDefaults(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

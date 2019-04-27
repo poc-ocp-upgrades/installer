@@ -24,9 +24,13 @@ func (a *PlatformCredsCheck) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&InstallConfig{}}
 }
 func (a *PlatformCredsCheck) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -61,6 +65,8 @@ func (a *PlatformCredsCheck) Generate(dependencies asset.Parents) error {
 	return err
 }
 func (a *PlatformCredsCheck) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

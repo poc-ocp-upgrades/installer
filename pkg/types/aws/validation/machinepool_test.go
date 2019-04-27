@@ -12,6 +12,8 @@ func TestValidateMachinePool(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	platform := &aws.Platform{Region: "us-east-1"}
 	cases := []struct {
 		name		string

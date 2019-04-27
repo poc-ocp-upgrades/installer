@@ -11,6 +11,8 @@ func globalPluginDirs(datadir string) ([]string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var ret []string
 	cdir, err := configDir()
 	if err != nil {

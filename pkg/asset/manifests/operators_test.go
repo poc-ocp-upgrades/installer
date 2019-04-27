@@ -15,6 +15,8 @@ func TestRedactedInstallConfig(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	createInstallConfig := func() *types.InstallConfig {
 		return &types.InstallConfig{ObjectMeta: metav1.ObjectMeta{Name: "test-cluster"}, SSHKey: "test-ssh-key", BaseDomain: "test-domain", Networking: &types.Networking{MachineCIDR: ipnet.MustParseCIDR("1.2.3.4/5"), NetworkType: "test-network-type", ClusterNetwork: []types.ClusterNetworkEntry{{CIDR: *ipnet.MustParseCIDR("1.2.3.4/5"), HostPrefix: 6}}, ServiceNetwork: []ipnet.IPNet{*ipnet.MustParseCIDR("1.2.3.4/5")}}, ControlPlane: &types.MachinePool{Name: "control-plane", Replicas: pointer.Int64Ptr(3)}, Compute: []types.MachinePool{{Name: "compute", Replicas: pointer.Int64Ptr(3)}}, Platform: types.Platform{VSphere: &vspheretypes.Platform{VCenter: "test-server-1", Username: "test-user-1", Password: "test-pass-1", Datacenter: "test-datacenter", DefaultDatastore: "test-datastore"}}, PullSecret: "test-pull-secret"}
 	}

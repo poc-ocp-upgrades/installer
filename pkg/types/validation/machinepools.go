@@ -30,6 +30,8 @@ func ValidateMachinePool(platform *types.Platform, p *types.MachinePool, fldPath
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if p.Replicas != nil {
 		if *p.Replicas < 0 {
@@ -45,6 +47,8 @@ func ValidateMachinePool(platform *types.Platform, p *types.MachinePool, fldPath
 	return allErrs
 }
 func validateMachinePoolPlatform(platform *types.Platform, p *types.MachinePoolPlatform, fldPath *field.Path) field.ErrorList {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

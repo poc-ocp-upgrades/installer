@@ -20,9 +20,13 @@ func newFileHook(file io.Writer, level logrus.Level, formatter logrus.Formatter)
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &fileHook{file: file, formatter: formatter, level: level}
 }
 func (h fileHook) Levels() []logrus.Level {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -40,6 +44,8 @@ func (h *fileHook) Fire(entry *logrus.Entry) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	line, err := h.formatter.Format(entry)
 	if err != nil {
 		return err
@@ -48,6 +54,8 @@ func (h *fileHook) Fire(entry *logrus.Entry) error {
 	return err
 }
 func setupFileHook(baseDir string) func() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

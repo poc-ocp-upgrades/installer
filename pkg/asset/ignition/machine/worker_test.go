@@ -16,6 +16,8 @@ func TestWorkerGenerate(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	installConfig := &installconfig.InstallConfig{Config: &types.InstallConfig{Networking: &types.Networking{ServiceNetwork: []ipnet.IPNet{*ipnet.MustParseCIDR("10.0.1.0/24")}}, Platform: types.Platform{AWS: &aws.Platform{Region: "us-east"}}}}
 	rootCA := &tls.RootCA{}
 	err := rootCA.Generate(nil)

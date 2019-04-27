@@ -33,10 +33,14 @@ func GetSession() (*Session, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	os.Setenv(azureAuthEnv, authFilePath)
 	return newSessionFromFile()
 }
 func newSessionFromFile() (*Session, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -71,6 +75,8 @@ func getCredentials(fs auth.FileSettings) (*Credentials, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	subscriptionID := fs.GetSubscriptionID()
 	if subscriptionID == "" {
 		return nil, errors.New("could not retrieve subscriptionId from auth file")
@@ -90,6 +96,8 @@ func getCredentials(fs auth.FileSettings) (*Credentials, error) {
 	return &Credentials{SubscriptionID: subscriptionID, ClientID: clientID, ClientSecret: clientSecret, TenantID: tenantID}, nil
 }
 func askForCredentials() (*Credentials, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -114,6 +122,8 @@ func askForCredentials() (*Credentials, error) {
 	return &Credentials{SubscriptionID: subscriptionID, ClientID: clientID, ClientSecret: clientSecret, TenantID: tenantID}, nil
 }
 func saveCredentials(credentials Credentials, filePath string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

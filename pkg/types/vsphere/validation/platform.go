@@ -10,6 +10,8 @@ func ValidatePlatform(p *vsphere.Platform, fldPath *field.Path) field.ErrorList 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if len(p.VCenter) == 0 {
 		allErrs = append(allErrs, field.Required(fldPath.Child("vCenter"), "must specify the name of the vCenter"))

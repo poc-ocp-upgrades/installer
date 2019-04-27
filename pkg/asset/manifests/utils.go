@@ -21,6 +21,8 @@ func configMap(namespace, name string, data genericData) *configurationObject {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &configurationObject{TypeMeta: metav1.TypeMeta{APIVersion: "v1", Kind: "ConfigMap"}, Metadata: metadata{Name: name, Namespace: namespace}, Data: data}
 }
 func getAPIServerURL(ic *types.InstallConfig) string {
@@ -28,9 +30,13 @@ func getAPIServerURL(ic *types.InstallConfig) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("https://api-int.%s:6443", ic.ClusterDomain())
 }
 func getEtcdDiscoveryDomain(ic *types.InstallConfig) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

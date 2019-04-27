@@ -11,6 +11,8 @@ func (t *Trimmer) Print(args ...interface{}) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if len(args) > 0 {
 		i := len(args) - 1
 		arg, ok := args[i].(string)

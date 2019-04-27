@@ -10,6 +10,8 @@ func init() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	PlatformNames = append(PlatformNames, libvirt.Name)
 	sort.Strings(PlatformNames)
 }

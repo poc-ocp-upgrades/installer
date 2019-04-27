@@ -22,6 +22,8 @@ func Manifests(configs []*mcfgv1.MachineConfig, role, directory string) ([]*asse
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	data := []byte{}
 	for _, c := range configs {
 		if c == nil {
@@ -44,6 +46,8 @@ func IsManifest(filename string) (bool, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	matched, err := filepath.Match(machineConfigFileNamePattern, filename)
 	if err != nil {
 		return false, err
@@ -51,6 +55,8 @@ func IsManifest(filename string) (bool, error) {
 	return matched, nil
 }
 func Load(f asset.FileFetcher, role, directory string) ([]*asset.File, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

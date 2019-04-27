@@ -12,11 +12,15 @@ func PrivateKeyToPem(key *rsa.PrivateKey) []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	keyInBytes := x509.MarshalPKCS1PrivateKey(key)
 	keyinPem := pem.EncodeToMemory(&pem.Block{Type: "RSA PRIVATE KEY", Bytes: keyInBytes})
 	return keyinPem
 }
 func CertToPem(cert *x509.Certificate) []byte {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -29,10 +33,14 @@ func CSRToPem(cert *x509.CertificateRequest) []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	certInPem := pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE REQUEST", Bytes: cert.Raw})
 	return certInPem
 }
 func PublicKeyToPem(key *rsa.PublicKey) ([]byte, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -49,6 +57,8 @@ func PemToPrivateKey(data []byte) (*rsa.PrivateKey, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	block, _ := pem.Decode(data)
 	if block == nil {
 		return nil, errors.Errorf("could not find a PEM block in the private key")
@@ -56,6 +66,8 @@ func PemToPrivateKey(data []byte) (*rsa.PrivateKey, error) {
 	return x509.ParsePKCS1PrivateKey(block.Bytes)
 }
 func PemToCertificate(data []byte) (*x509.Certificate, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -15,9 +15,13 @@ func (c *EtcdMetricSignerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *EtcdMetricSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -26,6 +30,8 @@ func (c *EtcdMetricSignerCertKey) Generate(parents asset.Parents) error {
 	return c.SelfSignedCertKey.Generate(cfg, "etcd-metric-signer")
 }
 func (c *EtcdMetricSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -42,9 +48,13 @@ func (a *EtcdMetricCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&EtcdMetricSignerCertKey{}}
 }
 func (a *EtcdMetricCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -61,6 +71,8 @@ func (a *EtcdMetricCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (etcd-metric-ca-bundle)"
 }
 
@@ -73,9 +85,13 @@ func (a *EtcdMetricSignerClientCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&EtcdMetricSignerCertKey{}}
 }
 func (a *EtcdMetricSignerClientCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -86,6 +102,8 @@ func (a *EtcdMetricSignerClientCertKey) Generate(dependencies asset.Parents) err
 	return a.SignedCertKey.Generate(cfg, ca, "etcd-metric-signer-client", DoNotAppendParent)
 }
 func (a *EtcdMetricSignerClientCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

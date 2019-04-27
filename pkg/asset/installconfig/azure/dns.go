@@ -25,9 +25,13 @@ func (z Zone) String() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("%s", z.Name)
 }
 func transformZone(f func(s string) *Zone) survey.Transformer {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -48,9 +52,13 @@ func (config DNSConfig) GetDNSZoneID(rgName string, zoneName string) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("/subscriptions/%s/resourceGroups/%s/providers/Microsoft.Network/dnszones/%s", config.Session.Credentials.SubscriptionID, rgName, zoneName)
 }
 func (config DNSConfig) GetDNSZone() (*Zone, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -76,6 +84,8 @@ func NewDNSConfig() (*DNSConfig, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	session, err := GetSession()
 	if err != nil {
 		return nil, errors.Wrap(err, "could not retrieve session information")
@@ -87,11 +97,15 @@ func newZonesClient(session *Session) ZonesGetter {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	azureClient := azdns.NewZonesClient(session.Credentials.SubscriptionID)
 	azureClient.Authorizer = session.Authorizer
 	return &ZonesClient{azureClient: azureClient}
 }
 func (client *ZonesClient) GetAllPublicZones() (map[string]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

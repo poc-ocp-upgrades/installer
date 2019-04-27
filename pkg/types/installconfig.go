@@ -38,6 +38,8 @@ func (c *InstallConfig) ClusterDomain() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("%s.%s", c.ObjectMeta.Name, c.BaseDomain)
 }
 
@@ -51,6 +53,8 @@ type Platform struct {
 }
 
 func (p *Platform) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

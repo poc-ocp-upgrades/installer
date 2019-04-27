@@ -17,6 +17,8 @@ func New(logger logrus.FieldLogger, rootDir string) (Destroyer, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	metadata, err := cluster.LoadMetadata(rootDir)
 	if err != nil {
 		return nil, err

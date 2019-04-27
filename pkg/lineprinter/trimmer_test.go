@@ -10,6 +10,8 @@ func TestTrimmer(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	print := &printer{}
 	trimmer := &Trimmer{WrappedPrint: print.print}
 	trimmer.Print("Hello\n", "World\n")

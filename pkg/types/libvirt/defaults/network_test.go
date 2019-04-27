@@ -11,9 +11,13 @@ func defaultNetwork() *libvirt.Network {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &libvirt.Network{IfName: defaultIfName}
 }
 func TestSetNetworkDefaults(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

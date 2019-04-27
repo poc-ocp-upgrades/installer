@@ -18,6 +18,8 @@ func RunOSCommandWithArgs(command string, arguments []string, path string) strin
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := exec.Command(command, arguments...)
 	cmd.Dir = path
 	cmd.Stdin = strings.NewReader("")
@@ -34,6 +36,8 @@ func RunOSCommandWithArgs(command string, arguments []string, path string) strin
 	return outb.String() + errb.String()
 }
 func RunInstallerWithSurvey(arguments []string, path string, commandLineArgs [][]string) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

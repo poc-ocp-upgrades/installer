@@ -25,6 +25,8 @@ func ValidatePlatform(p *aws.Platform, fldPath *field.Path) field.ErrorList {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if _, ok := Regions[p.Region]; !ok {
 		allErrs = append(allErrs, field.NotSupported(fldPath.Child("region"), p.Region, validRegionValues))

@@ -13,6 +13,8 @@ func (f *fileFetcher) FetchByName(name string) (*asset.File, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	data, err := ioutil.ReadFile(filepath.Join(f.directory, name))
 	if err != nil {
 		return nil, err
@@ -20,6 +22,8 @@ func (f *fileFetcher) FetchByName(name string) (*asset.File, error) {
 	return &asset.File{Filename: name, Data: data}, nil
 }
 func (f *fileFetcher) FetchByPattern(pattern string) (files []*asset.File, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

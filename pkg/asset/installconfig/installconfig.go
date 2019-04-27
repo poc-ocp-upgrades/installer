@@ -29,9 +29,13 @@ func (a *InstallConfig) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&sshPublicKey{}, &baseDomain{}, &clusterName{}, &pullSecret{}, &platform{}}
 }
 func (a *InstallConfig) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -67,9 +71,13 @@ func (a *InstallConfig) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Install Config"
 }
 func (a *InstallConfig) Files() []*asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -80,6 +88,8 @@ func (a *InstallConfig) Files() []*asset.File {
 	return []*asset.File{}
 }
 func (a *InstallConfig) Load(f asset.FileFetcher) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -117,10 +127,14 @@ func (a *InstallConfig) setDefaults() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	defaults.SetInstallConfigDefaults(a.Config)
 	return nil
 }
 func (a *InstallConfig) convert() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

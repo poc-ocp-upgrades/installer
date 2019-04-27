@@ -16,6 +16,8 @@ func newDestroyCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := &cobra.Command{Use: "destroy", Short: "Destroy part of an OpenShift cluster", Long: "", RunE: func(cmd *cobra.Command, args []string) error {
 		return cmd.Help()
 	}}
@@ -24,6 +26,8 @@ func newDestroyCmd() *cobra.Command {
 	return cmd
 }
 func newDestroyClusterCmd() *cobra.Command {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -38,6 +42,8 @@ func newDestroyClusterCmd() *cobra.Command {
 	}}
 }
 func runDestroyCmd(directory string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -65,6 +71,8 @@ func runDestroyCmd(directory string) error {
 	return nil
 }
 func newDestroyBootstrapCmd() *cobra.Command {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

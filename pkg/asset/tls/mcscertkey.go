@@ -16,9 +16,13 @@ func (a *MCSCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&RootCA{}, &installconfig.InstallConfig{}}
 }
 func (a *MCSCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -31,6 +35,8 @@ func (a *MCSCertKey) Generate(dependencies asset.Parents) error {
 	return a.SignedCertKey.Generate(cfg, ca, "machine-config-server", DoNotAppendParent)
 }
 func (a *MCSCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

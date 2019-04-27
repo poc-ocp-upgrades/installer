@@ -17,6 +17,8 @@ func (mck *mockCertKey) Cert() []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []byte(mck.cert)
 }
 func (mck *mockCertKey) Key() []byte {
@@ -24,9 +26,13 @@ func (mck *mockCertKey) Key() []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []byte(mck.key)
 }
 func Test_CertBundleGenerate(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -75,6 +75,8 @@ func newCreateCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := &cobra.Command{Use: "create", Short: "Create part of an OpenShift cluster", RunE: func(cmd *cobra.Command, args []string) error {
 		return cmd.Help()
 	}}
@@ -86,6 +88,8 @@ func newCreateCmd() *cobra.Command {
 	return cmd
 }
 func runTargetCmd(targets ...asset.WritableAsset) func(cmd *cobra.Command, args []string) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -124,6 +128,8 @@ func runTargetCmd(targets ...asset.WritableAsset) func(cmd *cobra.Command, args 
 	}
 }
 func addRouterCAToClusterCA(config *rest.Config, directory string) (err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -174,6 +180,8 @@ func waitForBootstrapComplete(ctx context.Context, config *rest.Config, director
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	client, err := kubernetes.NewForConfig(config)
 	if err != nil {
 		return errors.Wrap(err, "creating a Kubernetes client")
@@ -216,6 +224,8 @@ func waitForBootstrapConfigMap(ctx context.Context, client *kubernetes.Clientset
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	timeout := 30 * time.Minute
 	logrus.Infof("Waiting up to %v for bootstrapping to complete...", timeout)
 	waitCtx, cancel := context.WithTimeout(ctx, timeout)
@@ -242,6 +252,8 @@ func waitForBootstrapConfigMap(ctx context.Context, client *kubernetes.Clientset
 	return errors.Wrap(err, "failed to wait for bootstrapping to complete")
 }
 func waitForInitializedCluster(ctx context.Context, config *rest.Config) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -287,6 +299,8 @@ func waitForInitializedCluster(ctx context.Context, config *rest.Config) error {
 	return errors.Wrap(err, "failed to initialize the cluster")
 }
 func waitForConsole(ctx context.Context, config *rest.Config, directory string) (string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -343,6 +357,8 @@ func logComplete(directory, consoleURL string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	absDir, err := filepath.Abs(directory)
 	if err != nil {
 		return err
@@ -360,6 +376,8 @@ func logComplete(directory, consoleURL string) error {
 	return nil
 }
 func waitForInstallComplete(ctx context.Context, config *rest.Config, directory string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -17,9 +17,13 @@ func assetFilePath(filename string) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return filepath.Join(tlsDir, filename)
 }
 func apiAddress(cfg *types.InstallConfig) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -31,9 +35,13 @@ func internalAPIAddress(cfg *types.InstallConfig) string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fmt.Sprintf("api-int.%s", cfg.ClusterDomain())
 }
 func cidrhost(network net.IPNet, hostNum int) (string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -14,6 +14,8 @@ func (p *Platform) SetBaseDomain(baseDomainID string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	parts := strings.Split(baseDomainID, "/")
 	p.BaseDomainResourceGroupName = parts[4]
 	return nil

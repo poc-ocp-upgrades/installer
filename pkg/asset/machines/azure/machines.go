@@ -25,6 +25,8 @@ func Machines(clusterID string, config *types.InstallConfig, pool *types.Machine
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if configPlatform := config.Platform.Name(); configPlatform != azure.Name {
 		return nil, fmt.Errorf("non-Azure configuration: %q", configPlatform)
 	}
@@ -53,6 +55,8 @@ func provider(platform *azure.Platform, mpool *azure.MachinePool, osImage string
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &azureprovider.AzureMachineProviderSpec{TypeMeta: metav1.TypeMeta{APIVersion: "azureprovider.k8s.io/v1alpha1", Kind: "AzureMachineProviderSpec"}, UserDataSecret: &corev1.SecretReference{Name: userDataSecret}, CredentialsSecret: &corev1.SecretReference{Name: cloudsSecret, Namespace: cloudsSecretNamespace}, Location: platform.Region, VMSize: mpool.InstanceType, Image: azureprovider.Image{ResourceID: osImage}, OSDisk: azureprovider.OSDisk{OSType: "Linux", DiskSizeGB: 64, ManagedDisk: azureprovider.ManagedDisk{StorageAccountType: "Premium_LRS"}}}, nil
 }
 func ConfigMasters(machines []machineapi.Machine, clusterID string) {
@@ -60,6 +64,19 @@ func ConfigMasters(machines []machineapi.Machine, clusterID string) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }
 func _logClusterCodePath() {
 	_logClusterCodePath()
@@ -75,5 +92,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

@@ -15,9 +15,13 @@ func (a *JournalCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&RootCA{}}
 }
 func (a *JournalCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -28,6 +32,8 @@ func (a *JournalCertKey) Generate(dependencies asset.Parents) error {
 	return a.SignedCertKey.Generate(cfg, ca, "journal-gatewayd", DoNotAppendParent)
 }
 func (a *JournalCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

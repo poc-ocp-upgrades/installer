@@ -11,11 +11,15 @@ func (p Parents) Add(assets ...Asset) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, a := range assets {
 		p[reflect.TypeOf(a)] = a
 	}
 }
 func (p Parents) Get(assets ...Asset) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

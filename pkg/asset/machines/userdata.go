@@ -32,6 +32,8 @@ func userDataList(data map[string][]byte) ([]byte, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	encodedData := map[string]string{}
 	for name, content := range data {
 		encodedData[name] = base64.StdEncoding.EncodeToString(content)

@@ -25,6 +25,8 @@ func newGatherCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := &cobra.Command{Use: "gather", Short: "Gather debugging data for a given installation failure", Long: `Gather debugging data for a given installation failure.
 
 When installation for Openshift cluster fails, gathering all the data useful for debugging can
@@ -48,6 +50,8 @@ func newGatherBootstrapCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := &cobra.Command{Use: "bootstrap", Short: "Gather debugging data for a failing to bootstrap control plane", Args: cobra.ExactArgs(0), Run: func(_ *cobra.Command, _ []string) {
 		cleanup := setupFileHook(rootOpts.dir)
 		defer cleanup()
@@ -61,6 +65,8 @@ func newGatherBootstrapCmd() *cobra.Command {
 	return cmd
 }
 func runGatherBootstrapCmd(directory string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -105,6 +111,8 @@ func logGatherBootstrap(bootstrap string, masters []string) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if s, ok := os.LookupEnv("SSH_AUTH_SOCK"); !ok || s == "" {
 		logrus.Info("Make sure ssh-agent is running, env SSH_AUTH_SOCK is set to the ssh-agent's UNIX socket and your private key is added to the agent.")
 	}
@@ -113,6 +121,8 @@ func logGatherBootstrap(bootstrap string, masters []string) {
 	logrus.Infof("scp core@%s:~/log-bundle.tar.gz .", bootstrap)
 }
 func extractHostAddresses(config *types.InstallConfig, tfstate terraformState) (bootstrap string, masters []string, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -194,6 +204,8 @@ func (tfs *terraformState) UnmarshalJSON(raw []byte) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var transform struct {
 		Modules []struct {
 			Path	[]string	`json:"path"`
@@ -222,9 +234,13 @@ func (e errUnSupportedGatherPlatform) Error() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return e.Message
 }
 func unSupportedPlatformGather() error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

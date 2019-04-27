@@ -18,6 +18,8 @@ func (s *State) PersistToFile(directory string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if s == nil {
 		return nil
 	}

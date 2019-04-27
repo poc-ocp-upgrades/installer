@@ -14,6 +14,8 @@ func newWaitForCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := &cobra.Command{Use: "wait-for", Short: "Wait for install-time events", Long: `Wait for install-time events.
 
 'create cluster' has a few stages that wait for cluster events.  But
@@ -26,6 +28,8 @@ them directly.`, RunE: func(cmd *cobra.Command, args []string) error {
 	return cmd
 }
 func newWaitForBootstrapCompleteCmd() *cobra.Command {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -48,6 +52,8 @@ func newWaitForBootstrapCompleteCmd() *cobra.Command {
 	}}
 }
 func newWaitForInstallCompleteCmd() *cobra.Command {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

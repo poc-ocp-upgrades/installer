@@ -15,9 +15,13 @@ func (c *KubeControlPlaneSignerCertKey) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
 func (c *KubeControlPlaneSignerCertKey) Generate(parents asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -26,6 +30,8 @@ func (c *KubeControlPlaneSignerCertKey) Generate(parents asset.Parents) error {
 	return c.SelfSignedCertKey.Generate(cfg, "kube-control-plane-signer")
 }
 func (c *KubeControlPlaneSignerCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -42,9 +48,13 @@ func (a *KubeControlPlaneCABundle) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeControlPlaneSignerCertKey{}, &KubeAPIServerLBSignerCertKey{}, &KubeAPIServerLocalhostSignerCertKey{}, &KubeAPIServerServiceNetworkSignerCertKey{}}
 }
 func (a *KubeControlPlaneCABundle) Generate(deps asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -61,6 +71,8 @@ func (a *KubeControlPlaneCABundle) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Certificate (kube-control-plane-ca-bundle)"
 }
 
@@ -73,9 +85,13 @@ func (a *KubeControlPlaneKubeControllerManagerClientCertKey) Dependencies() []as
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeControlPlaneSignerCertKey{}}
 }
 func (a *KubeControlPlaneKubeControllerManagerClientCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -86,6 +102,8 @@ func (a *KubeControlPlaneKubeControllerManagerClientCertKey) Generate(dependenci
 	return a.SignedCertKey.Generate(cfg, ca, "kube-control-plane-kube-controller-manager-client", DoNotAppendParent)
 }
 func (a *KubeControlPlaneKubeControllerManagerClientCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -102,9 +120,13 @@ func (a *KubeControlPlaneKubeSchedulerClientCertKey) Dependencies() []asset.Asse
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&KubeControlPlaneSignerCertKey{}}
 }
 func (a *KubeControlPlaneKubeSchedulerClientCertKey) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -115,6 +137,8 @@ func (a *KubeControlPlaneKubeSchedulerClientCertKey) Generate(dependencies asset
 	return a.SignedCertKey.Generate(cfg, ca, "kube-control-plane-kube-scheduler-client", DoNotAppendParent)
 }
 func (a *KubeControlPlaneKubeSchedulerClientCertKey) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -12,6 +12,8 @@ func AvailabilityZones(region string) ([]string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	ec2Client, err := ec2Client(region)
 	if err != nil {
 		return nil, err
@@ -27,6 +29,8 @@ func ec2Client(region string) (*ec2.EC2, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	ssn, err := awsutil.GetSession()
 	if err != nil {
 		return nil, err
@@ -35,6 +39,8 @@ func ec2Client(region string) (*ec2.EC2, error) {
 	return client, nil
 }
 func fetchAvailabilityZones(client *ec2.EC2, region string) ([]string, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

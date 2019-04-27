@@ -43,6 +43,8 @@ func PrivateKey() (*rsa.PrivateKey, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	rsaKey, err := rsa.GenerateKey(rand.Reader, keySize)
 	if err != nil {
 		return nil, errors.Wrap(err, "error generating RSA private key")
@@ -50,6 +52,8 @@ func PrivateKey() (*rsa.PrivateKey, error) {
 	return rsaKey, nil
 }
 func SelfSignedCertificate(cfg *CertCfg, key *rsa.PrivateKey) (*x509.Certificate, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -78,6 +82,8 @@ func SignedCertificate(cfg *CertCfg, csr *x509.CertificateRequest, key *rsa.Priv
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	serial, err := rand.Int(rand.Reader, new(big.Int).SetInt64(math.MaxInt64))
 	if err != nil {
 		return nil, err
@@ -95,6 +101,8 @@ func SignedCertificate(cfg *CertCfg, csr *x509.CertificateRequest, key *rsa.Priv
 	return x509.ParseCertificate(certBytes)
 }
 func generateSubjectKeyID(pub crypto.PublicKey) ([]byte, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -120,6 +128,8 @@ func GenerateSignedCertificate(caKey *rsa.PrivateKey, caCert *x509.Certificate, 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	key, err := PrivateKey()
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to generate private key")
@@ -140,6 +150,8 @@ func GenerateSignedCertificate(caKey *rsa.PrivateKey, caCert *x509.Certificate, 
 	return key, cert, nil
 }
 func GenerateSelfSignedCertificate(cfg *CertCfg) (*rsa.PrivateKey, *x509.Certificate, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

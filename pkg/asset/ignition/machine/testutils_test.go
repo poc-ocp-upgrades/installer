@@ -18,6 +18,8 @@ func assertFilesInIgnitionConfig(t *testing.T, ignitionConfig []byte, fileAssert
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var ic map[string]interface{}
 	if err := json.Unmarshal(ignitionConfig, &ic); err != nil {
 		return assert.NoError(t, err, "unexpected error unmarshaling ignition config")
@@ -88,6 +90,8 @@ type systemdUnitAssertion struct {
 }
 
 func assertSystemdUnitsInIgnitionConfig(t *testing.T, ignitionConfig []byte, unitAssertions ...systemdUnitAssertion) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -179,6 +183,8 @@ type userAssertion struct {
 }
 
 func assertUsersInIgnitionConfig(t *testing.T, ignitionConfig []byte, userAssertions ...userAssertion) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -37,6 +37,8 @@ func (o *ClusterUninstaller) Run() error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	conn, err := libvirt.NewConnect(o.LibvirtURI)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Libvirt daemon")
@@ -54,6 +56,8 @@ func deleteDomains(conn *libvirt.Connect, filter filterFunc, logger logrus.Field
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger.Debug("Deleting libvirt domains")
 	var err error
 	nothingToDelete := false
@@ -66,6 +70,8 @@ func deleteDomains(conn *libvirt.Connect, filter filterFunc, logger logrus.Field
 	return nil
 }
 func deleteDomainsSinglePass(conn *libvirt.Connect, filter filterFunc, logger logrus.FieldLogger) (nothingToDelete bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -102,6 +108,8 @@ func deleteDomainsSinglePass(conn *libvirt.Connect, filter filterFunc, logger lo
 	return nothingToDelete, nil
 }
 func deleteVolumes(conn *libvirt.Connect, filter filterFunc, logger logrus.FieldLogger) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -158,6 +166,8 @@ func deleteNetwork(conn *libvirt.Connect, filter filterFunc, logger logrus.Field
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	logger.Debug("Deleting libvirt network")
 	networks, err := conn.ListNetworks()
 	if err != nil {
@@ -183,6 +193,8 @@ func deleteNetwork(conn *libvirt.Connect, filter filterFunc, logger logrus.Field
 	return nil
 }
 func New(logger logrus.FieldLogger, metadata *types.ClusterMetadata) (destroy.Destroyer, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

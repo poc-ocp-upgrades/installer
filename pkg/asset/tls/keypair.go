@@ -20,6 +20,8 @@ func (k *KeyPair) Generate(filenameBase string) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	key, err := PrivateKey()
 	if err != nil {
 		return errors.Wrap(err, "failed to generate private key")
@@ -38,6 +40,8 @@ func (k *KeyPair) Public() []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return k.Pub
 }
 func (k *KeyPair) Private() []byte {
@@ -45,9 +49,13 @@ func (k *KeyPair) Private() []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return k.Pvt
 }
 func (k *KeyPair) Files() []*asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

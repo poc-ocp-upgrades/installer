@@ -13,5 +13,7 @@ func ForHyperthreadingDisabled(role string) *mcfgv1.MachineConfig {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &mcfgv1.MachineConfig{TypeMeta: metav1.TypeMeta{APIVersion: "machineconfiguration.openshift.io/v1", Kind: "MachineConfig"}, ObjectMeta: metav1.ObjectMeta{Name: fmt.Sprintf("99-%s-disable-hyperthreading", role), Labels: map[string]string{"machineconfiguration.openshift.io/role": role}}, Spec: mcfgv1.MachineConfigSpec{Config: igntypes.Config{Ignition: igntypes.Ignition{Version: igntypes.MaxVersion.String()}, Storage: igntypes.Storage{Files: []igntypes.File{ignition.FileFromString("/etc/pivot/kernel-args", "root", 0600, "ADD nosmt")}}}}}
 }

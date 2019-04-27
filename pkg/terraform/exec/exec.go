@@ -30,6 +30,8 @@ func runner(cmd string, dir string, args []string, stdout, stderr io.Writer) int
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	lf := ioutil.Discard
 	if level := logging.LogLevel(); level != "" {
 		lf = &logutils.LevelFilter{Levels: logging.ValidLevels, MinLevel: logutils.LogLevel(level), Writer: stdout}
@@ -70,9 +72,13 @@ func Apply(datadir string, args []string, stdout, stderr io.Writer) int {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return runner("apply", datadir, args, stdout, stderr)
 }
 func Destroy(datadir string, args []string, stdout, stderr io.Writer) int {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -84,9 +90,13 @@ func Init(datadir string, args []string, stdout, stderr io.Writer) int {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return runner("init", datadir, args, stdout, stderr)
 }
 func makeShutdownCh() (<-chan struct{}, func()) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

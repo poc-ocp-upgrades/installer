@@ -13,6 +13,8 @@ func SetPlatformDefaults(p *libvirt.Platform) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if p.URI == "" {
 		p.URI = DefaultURI
 	}

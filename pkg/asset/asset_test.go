@@ -16,6 +16,8 @@ func (a *persistAsset) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "persist-asset"
 }
 func (a *persistAsset) Dependencies() []Asset {
@@ -23,9 +25,13 @@ func (a *persistAsset) Dependencies() []Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []Asset{}
 }
 func (a *persistAsset) Generate(Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -43,6 +49,8 @@ func (a *writablePersistAsset) Files() []*File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return a.FileList
 }
 func (a *writablePersistAsset) Load(FileFetcher) (bool, error) {
@@ -50,9 +58,13 @@ func (a *writablePersistAsset) Load(FileFetcher) (bool, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return false, nil
 }
 func TestPersistToFile(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -82,6 +94,8 @@ func TestPersistToFile(t *testing.T) {
 	}
 }
 func verifyFilesCreated(t *testing.T, dir string, expectedFiles map[string][]byte) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

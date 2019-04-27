@@ -23,9 +23,13 @@ func defaultInstallConfig() *types.InstallConfig {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return &types.InstallConfig{Networking: &types.Networking{MachineCIDR: defaultMachineCIDR, NetworkType: defaultNetworkType, ServiceNetwork: []ipnet.IPNet{*defaultServiceNetwork}, ClusterNetwork: []types.ClusterNetworkEntry{{CIDR: *defaultClusterNetwork, HostPrefix: int32(defaultHostPrefix)}}}, ControlPlane: defaultMachinePool("master"), Compute: []types.MachinePool{*defaultMachinePool("worker")}}
 }
 func defaultAWSInstallConfig() *types.InstallConfig {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -40,12 +44,16 @@ func defaultAzureInstallConfig() *types.InstallConfig {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	c := defaultInstallConfig()
 	c.Platform.Azure = &azure.Platform{}
 	azuredefaults.SetPlatformDefaults(c.Platform.Azure)
 	return c
 }
 func defaultLibvirtInstallConfig() *types.InstallConfig {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -63,6 +71,8 @@ func defaultOpenStackInstallConfig() *types.InstallConfig {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	c := defaultInstallConfig()
 	c.Platform.OpenStack = &openstack.Platform{}
 	openstackdefaults.SetPlatformDefaults(c.Platform.OpenStack)
@@ -73,12 +83,16 @@ func defaultNoneInstallConfig() *types.InstallConfig {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	c := defaultInstallConfig()
 	c.Platform.None = &none.Platform{}
 	nonedefaults.SetPlatformDefaults(c.Platform.None)
 	return c
 }
 func TestSetInstallConfigDefaults(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

@@ -11,6 +11,8 @@ func assertJSON(t *testing.T, data interface{}, expected string) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	actualBytes, err := json.Marshal(data)
 	if err != nil {
 		t.Fatal(err)
@@ -25,6 +27,8 @@ func TestMarshal(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	stdlibIPNet := &net.IPNet{IP: net.IP{192, 168, 0, 10}, Mask: net.IPv4Mask(255, 255, 255, 0)}
 	assertJSON(t, stdlibIPNet, "{\"IP\":\"192.168.0.10\",\"Mask\":\"////AA==\"}")
 	wrappedIPNet := &IPNet{IPNet: *stdlibIPNet}
@@ -33,6 +37,8 @@ func TestMarshal(t *testing.T) {
 	assertJSON(t, nil, "null")
 }
 func TestUnmarshal(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

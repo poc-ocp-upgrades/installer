@@ -94,6 +94,8 @@ func ValidateInstallStateConfig(filePath string, expectedData DataToValidate) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	fileName := ".openshift_install_state.json"
 	openshiftInstState, err := os.Open(filePath)
 	if err != nil {

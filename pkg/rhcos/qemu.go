@@ -11,6 +11,8 @@ func QEMU(ctx context.Context) (string, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	meta, err := fetchRHCOSBuild(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to fetch RHCOS metadata")

@@ -21,6 +21,8 @@ func clearAssetBehaviors() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	generationLog = []string{}
 	dependencies = map[reflect.Type][]asset.Asset{}
 	onDiskAssets = map[reflect.Type]bool{}
@@ -30,9 +32,13 @@ func dependenciesTestStoreAsset(a asset.Asset) []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return dependencies[reflect.TypeOf(a)]
 }
 func generateTestStoreAsset(a asset.Asset) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -45,9 +51,13 @@ func fileTestStoreAsset(a asset.Asset) []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []*asset.File{{Filename: a.Name()}}
 }
 func loadTestStoreAsset(a asset.Asset) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -62,9 +72,13 @@ func (a *testStoreAssetA) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "a"
 }
 func (a *testStoreAssetA) Dependencies() []asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -76,6 +90,8 @@ func (a *testStoreAssetA) Generate(asset.Parents) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return generateTestStoreAsset(a)
 }
 func (a *testStoreAssetA) Files() []*asset.File {
@@ -83,9 +99,13 @@ func (a *testStoreAssetA) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fileTestStoreAsset(a)
 }
 func (a *testStoreAssetA) Load(asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -100,9 +120,13 @@ func (a *testStoreAssetB) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "b"
 }
 func (a *testStoreAssetB) Dependencies() []asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -114,6 +138,8 @@ func (a *testStoreAssetB) Generate(asset.Parents) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return generateTestStoreAsset(a)
 }
 func (a *testStoreAssetB) Files() []*asset.File {
@@ -121,9 +147,13 @@ func (a *testStoreAssetB) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fileTestStoreAsset(a)
 }
 func (a *testStoreAssetB) Load(asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -138,9 +168,13 @@ func (a *testStoreAssetC) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "c"
 }
 func (a *testStoreAssetC) Dependencies() []asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -152,6 +186,8 @@ func (a *testStoreAssetC) Generate(asset.Parents) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return generateTestStoreAsset(a)
 }
 func (a *testStoreAssetC) Files() []*asset.File {
@@ -159,9 +195,13 @@ func (a *testStoreAssetC) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return fileTestStoreAsset(a)
 }
 func (a *testStoreAssetC) Load(asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -176,9 +216,13 @@ func (a *testStoreAssetD) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "d"
 }
 func (a *testStoreAssetD) Dependencies() []asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -190,9 +234,13 @@ func (a *testStoreAssetD) Generate(asset.Parents) error {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return generateTestStoreAsset(a)
 }
 func (a *testStoreAssetD) Files() []*asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -204,9 +252,13 @@ func (a *testStoreAssetD) Load(asset.FileFetcher) (bool, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return loadTestStoreAsset(a)
 }
 func newTestStoreAsset(name string) asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -225,6 +277,8 @@ func newTestStoreAsset(name string) asset.Asset {
 	}
 }
 func TestStoreFetch(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -271,6 +325,8 @@ func TestStoreFetchOnDiskAssets(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cases := []struct {
 		name			string
 		assets			map[string][]string
@@ -305,6 +361,8 @@ func TestStoreFetchOnDiskAssets(t *testing.T) {
 	}
 }
 func TestStoreFetchIdempotency(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

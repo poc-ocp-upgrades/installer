@@ -10,6 +10,8 @@ func TestCloudProviderConfig(t *testing.T) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	config := CloudProviderConfig{GroupLocation: "westeurope", ResourcePrefix: "clusterid", SubscriptionID: "subID", TenantID: "tenantID"}
 	expected := `{
 	"cloud": "AzurePublicCloud",

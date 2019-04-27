@@ -12,6 +12,8 @@ func Unpack(base string, uri string) (err error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	file, err := Assets.Open(uri)
 	if err != nil {
 		return err

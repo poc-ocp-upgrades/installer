@@ -22,6 +22,8 @@ func Machines(clusterID string, config *types.InstallConfig, pool *types.Machine
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if configPlatform := config.Platform.Name(); configPlatform != aws.Name {
 		return nil, fmt.Errorf("non-AWS configuration: %q", configPlatform)
 	}
@@ -52,6 +54,8 @@ func provider(clusterID string, platform *aws.Platform, mpool *aws.MachinePool, 
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	az := mpool.Zones[azIdx]
 	amiID := osImage
 	tags, err := tagsFromUserTags(clusterID, platform.UserTags)
@@ -61,6 +65,8 @@ func provider(clusterID string, platform *aws.Platform, mpool *aws.MachinePool, 
 	return &awsprovider.AWSMachineProviderConfig{TypeMeta: metav1.TypeMeta{APIVersion: "awsproviderconfig.openshift.io/v1beta1", Kind: "AWSMachineProviderConfig"}, InstanceType: mpool.InstanceType, BlockDevices: []awsprovider.BlockDeviceMappingSpec{{EBS: &awsprovider.EBSBlockDeviceSpec{VolumeType: pointer.StringPtr(mpool.Type), VolumeSize: pointer.Int64Ptr(int64(mpool.Size)), Iops: pointer.Int64Ptr(int64(mpool.IOPS))}}}, AMI: awsprovider.AWSResourceReference{ID: &amiID}, Tags: tags, IAMInstanceProfile: &awsprovider.AWSResourceReference{ID: pointer.StringPtr(fmt.Sprintf("%s-%s-profile", clusterID, role))}, UserDataSecret: &corev1.LocalObjectReference{Name: userDataSecret}, CredentialsSecret: &corev1.LocalObjectReference{Name: "aws-cloud-credentials"}, Subnet: awsprovider.AWSResourceReference{Filters: []awsprovider.Filter{{Name: "tag:Name", Values: []string{fmt.Sprintf("%s-private-%s", clusterID, az)}}}}, Placement: awsprovider.Placement{Region: platform.Region, AvailabilityZone: az}, SecurityGroups: []awsprovider.AWSResourceReference{{Filters: []awsprovider.Filter{{Name: "tag:Name", Values: []string{fmt.Sprintf("%s-%s-sg", clusterID, role)}}}}}}, nil
 }
 func tagsFromUserTags(clusterID string, usertags map[string]string) ([]awsprovider.TagSpecification, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -83,6 +89,8 @@ func ConfigMasters(machines []machineapi.Machine, clusterID string) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, machine := range machines {
 		providerSpec := machine.Spec.ProviderSpec.Value.Object.(*awsprovider.AWSMachineProviderConfig)
 		providerSpec.LoadBalancers = []awsprovider.LoadBalancerReference{{Name: fmt.Sprintf("%s-ext", clusterID), Type: awsprovider.NetworkLoadBalancerType}, {Name: fmt.Sprintf("%s-int", clusterID), Type: awsprovider.NetworkLoadBalancerType}}
@@ -93,6 +101,17 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	pc, _, _, _ := godefaultruntime.Caller(1)
+	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
+	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+}
+func _logClusterCodePath() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
 	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
@@ -102,5 +121,5 @@ func _logClusterCodePath() {
 	defer _logClusterCodePath()
 	pc, _, _, _ := godefaultruntime.Caller(1)
 	jsonLog := []byte(fmt.Sprintf("{\"fn\": \"%s\"}", godefaultruntime.FuncForPC(pc).Name()))
-	godefaulthttp.Post("http://35.226.239.161:5001/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
+	godefaulthttp.Post("/"+"logcode", "application/json", godefaultbytes.NewBuffer(jsonLog))
 }

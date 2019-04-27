@@ -33,6 +33,8 @@ func (m *Metadata) Name() string {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Metadata"
 }
 func (m *Metadata) Dependencies() []asset.Asset {
@@ -40,9 +42,13 @@ func (m *Metadata) Dependencies() []asset.Asset {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{&installconfig.ClusterID{}, &installconfig.InstallConfig{}}
 }
 func (m *Metadata) Generate(parents asset.Parents) (err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -76,6 +82,8 @@ func (m *Metadata) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if m.File != nil {
 		return []*asset.File{m.File}
 	}
@@ -86,9 +94,13 @@ func (m *Metadata) Load(f asset.FileFetcher) (found bool, err error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return false, nil
 }
 func LoadMetadata(dir string) (*types.ClusterMetadata, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

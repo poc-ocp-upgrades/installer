@@ -21,11 +21,15 @@ func newGraphCmd() *cobra.Command {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	cmd := &cobra.Command{Use: "graph", Short: "Outputs the internal dependency graph for installer", Long: "", Args: cobra.ExactArgs(0), RunE: runGraphCmd}
 	cmd.PersistentFlags().StringVar(&graphOpts.outputFile, "output-file", "", "file where the graph is written, if empty prints the graph to Stdout.")
 	return cmd
 }
 func runGraphCmd(cmd *cobra.Command, args []string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -72,6 +76,8 @@ func addEdge(g *gographviz.Graph, parent string, asset asset.Asset) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	name := fmt.Sprintf("%q", reflect.TypeOf(asset).Elem())
 	if !g.IsNode(name) {
 		logrus.Debugf("adding node %s", name)
@@ -87,6 +93,8 @@ func addEdge(g *gographviz.Graph, parent string, asset asset.Asset) {
 	}
 }
 func isEdge(g *gographviz.Graph, src, dst string) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()

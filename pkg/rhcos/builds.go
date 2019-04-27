@@ -27,6 +27,8 @@ func fetchRHCOSBuild(ctx context.Context) (*metadata, error) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	file, err := data.Assets.Open("rhcos.json")
 	if err != nil {
 		return nil, err

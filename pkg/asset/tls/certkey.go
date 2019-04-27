@@ -24,9 +24,13 @@ func (c *CertKey) Cert() []byte {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return c.CertRaw
 }
 func (c *CertKey) Key() []byte {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -38,9 +42,13 @@ func (c *CertKey) Files() []*asset.File {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return c.FileList
 }
 func (c *CertKey) CertFile() *asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -52,9 +60,13 @@ func (c *CertKey) generateFiles(filenameBase string) {
 	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	c.FileList = []*asset.File{{Filename: assetFilePath(filenameBase + ".key"), Data: c.KeyRaw}, {Filename: assetFilePath(filenameBase + ".crt"), Data: c.CertRaw}}
 }
 func (c *CertKey) Load(asset.FileFetcher) (bool, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -72,6 +84,8 @@ const (
 type SignedCertKey struct{ CertKey }
 
 func (c *SignedCertKey) Generate(cfg *CertCfg, parentCA CertKeyInterface, filenameBase string, appendParent AppendParentChoice) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
@@ -103,6 +117,8 @@ func (c *SignedCertKey) Generate(cfg *CertCfg, parentCA CertKeyInterface, filena
 type SelfSignedCertKey struct{ CertKey }
 
 func (c *SelfSignedCertKey) Generate(cfg *CertCfg, filenameBase string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	_logClusterCodePath()
 	defer _logClusterCodePath()
 	_logClusterCodePath()
