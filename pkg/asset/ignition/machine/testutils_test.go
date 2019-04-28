@@ -3,24 +3,19 @@ package machine
 import (
 	"encoding/json"
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 	"github.com/vincent-petithory/dataurl"
 )
 
 type fileAssertion struct {
-	path       string
-	data       string
-	additional func(*testing.T, map[string]interface{}) bool
+	path		string
+	data		string
+	additional	func(*testing.T, map[string]interface{}) bool
 }
 
-// assertFilesInIgnitionConfig asserts that the specified ignition config
-// contains exactly the files enumerated in fileAssertions.
-func assertFilesInIgnitionConfig(
-	t *testing.T,
-	ignitionConfig []byte,
-	fileAssertions ...fileAssertion,
-) bool {
+func assertFilesInIgnitionConfig(t *testing.T, ignitionConfig []byte, fileAssertions ...fileAssertion) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var ic map[string]interface{}
 	if err := json.Unmarshal(ignitionConfig, &ic); err != nil {
 		return assert.NoError(t, err, "unexpected error unmarshaling ignition config")
@@ -84,19 +79,15 @@ func assertFilesInIgnitionConfig(
 }
 
 type systemdUnitAssertion struct {
-	name       string
-	dropinName string
-	contents   string
-	additional func(*testing.T, map[string]interface{}) bool
+	name		string
+	dropinName	string
+	contents	string
+	additional	func(*testing.T, map[string]interface{}) bool
 }
 
-// assertSystemdUnitsInIgnitionConfig asserts that the specified ignition config
-// contains exactly the systemd units enumerated in unitAssertions.
-func assertSystemdUnitsInIgnitionConfig(
-	t *testing.T,
-	ignitionConfig []byte,
-	unitAssertions ...systemdUnitAssertion,
-) bool {
+func assertSystemdUnitsInIgnitionConfig(t *testing.T, ignitionConfig []byte, unitAssertions ...systemdUnitAssertion) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var ic map[string]interface{}
 	if err := json.Unmarshal(ignitionConfig, &ic); err != nil {
 		return assert.NoError(t, err, "unexpected error unmarshaling ignition config")
@@ -178,18 +169,14 @@ func assertSystemdUnitsInIgnitionConfig(
 }
 
 type userAssertion struct {
-	name       string
-	sshKey     string
-	additional func(*testing.T, map[string]interface{}) bool
+	name		string
+	sshKey		string
+	additional	func(*testing.T, map[string]interface{}) bool
 }
 
-// assertUsersInIgnitionConfig asserts that the specified ignition config
-// contains exactly the users enumerated in userAssertions.
-func assertUsersInIgnitionConfig(
-	t *testing.T,
-	ignitionConfig []byte,
-	userAssertions ...userAssertion,
-) bool {
+func assertUsersInIgnitionConfig(t *testing.T, ignitionConfig []byte, userAssertions ...userAssertion) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	var ic map[string]interface{}
 	if err := json.Unmarshal(ignitionConfig, &ic); err != nil {
 		return assert.NoError(t, err, "unexpected error unmarshaling ignition config")

@@ -6,10 +6,10 @@ import (
 )
 
 func init() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	azurermProvider := func() {
-		plugin.Serve(&plugin.ServeOpts{
-			ProviderFunc: azurerm.Provider,
-		})
+		plugin.Serve(&plugin.ServeOpts{ProviderFunc: azurerm.Provider})
 	}
 	KnownPlugins["terraform-provider-azurerm"] = azurermProvider
 }

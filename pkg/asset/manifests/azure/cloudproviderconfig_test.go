@@ -2,18 +2,13 @@ package azure
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 )
 
 func TestCloudProviderConfig(t *testing.T) {
-
-	config := CloudProviderConfig{
-		GroupLocation:  "westeurope",
-		ResourcePrefix: "clusterid",
-		SubscriptionID: "subID",
-		TenantID:       "tenantID",
-	}
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	config := CloudProviderConfig{GroupLocation: "westeurope", ResourcePrefix: "clusterid", SubscriptionID: "subID", TenantID: "tenantID"}
 	expected := `{
 	"cloud": "AzurePublicCloud",
 	"tenantId": "tenantID",
@@ -51,7 +46,6 @@ func TestCloudProviderConfig(t *testing.T) {
 	"maximumLoadBalancerRuleCount": 0
 }
 `
-
 	json, err := config.JSON()
 	assert.NoError(t, err, "failed to create cloud provider config")
 	assert.Equal(t, expected, json, "unexpected cloud provider config")

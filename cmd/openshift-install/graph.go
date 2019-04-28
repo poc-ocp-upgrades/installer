@@ -6,42 +6,31 @@ import (
 	"os"
 	"reflect"
 	"regexp"
-
 	"github.com/awalterschulze/gographviz"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-
 	"github.com/openshift/installer/pkg/asset"
 )
 
 var (
-	graphOpts struct {
-		outputFile string
-	}
+	graphOpts struct{ outputFile string }
 )
 
 func newGraphCmd() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "graph",
-		Short: "Outputs the internal dependency graph for installer",
-		Long:  "",
-		Args:  cobra.ExactArgs(0),
-		RunE:  runGraphCmd,
-	}
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	cmd := &cobra.Command{Use: "graph", Short: "Outputs the internal dependency graph for installer", Long: "", Args: cobra.ExactArgs(0), RunE: runGraphCmd}
 	cmd.PersistentFlags().StringVar(&graphOpts.outputFile, "output-file", "", "file where the graph is written, if empty prints the graph to Stdout.")
 	return cmd
 }
-
 func runGraphCmd(cmd *cobra.Command, args []string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	g := gographviz.NewGraph()
 	g.SetName("G")
 	g.SetDir(true)
 	g.SetStrict(true)
-
-	tNodeAttr := map[string]string{
-		string(gographviz.Shape): "box",
-		string(gographviz.Style): "filled",
-	}
+	tNodeAttr := map[string]string{string(gographviz.Shape): "box", string(gographviz.Style): "filled"}
 	for _, t := range targets {
 		name := fmt.Sprintf("%q", fmt.Sprintf("Target %s", t.name))
 		g.AddNode("G", name, tNodeAttr)
@@ -49,7 +38,6 @@ func runGraphCmd(cmd *cobra.Command, args []string) error {
 			addEdge(g, name, dep)
 		}
 	}
-
 	g.AddAttr("G", "rankdir", "LR")
 	r := regexp.MustCompile(`[. ]`)
 	for _, node := range g.Nodes.Nodes {
@@ -61,7 +49,6 @@ func runGraphCmd(cmd *cobra.Command, args []string) error {
 		}
 		g.AddNode(subgraphName, node.Name, nil)
 	}
-
 	out := os.Stdout
 	if graphOpts.outputFile != "" {
 		f, err := os.Create(graphOpts.outputFile)
@@ -71,16 +58,15 @@ func runGraphCmd(cmd *cobra.Command, args []string) error {
 		defer f.Close()
 		out = f
 	}
-
 	if _, err := io.WriteString(out, g.String()); err != nil {
 		return err
 	}
 	return nil
 }
-
 func addEdge(g *gographviz.Graph, parent string, asset asset.Asset) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	name := fmt.Sprintf("%q", reflect.TypeOf(asset).Elem())
-
 	if !g.IsNode(name) {
 		logrus.Debugf("adding node %s", name)
 		g.AddNode("G", name, nil)
@@ -89,14 +75,14 @@ func addEdge(g *gographviz.Graph, parent string, asset asset.Asset) {
 		logrus.Debugf("adding edge %s -> %s", name, parent)
 		g.AddEdge(name, parent, true, nil)
 	}
-
 	deps := asset.Dependencies()
 	for _, dep := range deps {
 		addEdge(g, name, dep)
 	}
 }
-
 func isEdge(g *gographviz.Graph, src, dst string) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	for _, edge := range g.Edges.Edges {
 		if edge.Src == src && edge.Dst == dst {
 			return true

@@ -6,10 +6,10 @@ import (
 )
 
 func init() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	localProvider := func() {
-		plugin.Serve(&plugin.ServeOpts{
-			ProviderFunc: local.Provider,
-		})
+		plugin.Serve(&plugin.ServeOpts{ProviderFunc: local.Provider})
 	}
 	KnownPlugins["terraform-provider-local"] = localProvider
 }

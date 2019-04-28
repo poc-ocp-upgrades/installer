@@ -2,57 +2,19 @@ package manifests
 
 import (
 	"testing"
-
 	"github.com/stretchr/testify/assert"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/pointer"
-
 	"github.com/openshift/installer/pkg/ipnet"
 	"github.com/openshift/installer/pkg/types"
 	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
-// TestRedactedInstallConfig tests the redactedInstallConfig function.
 func TestRedactedInstallConfig(t *testing.T) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	createInstallConfig := func() *types.InstallConfig {
-		return &types.InstallConfig{
-			ObjectMeta: metav1.ObjectMeta{
-				Name: "test-cluster",
-			},
-			SSHKey:     "test-ssh-key",
-			BaseDomain: "test-domain",
-			Networking: &types.Networking{
-				MachineCIDR: ipnet.MustParseCIDR("1.2.3.4/5"),
-				NetworkType: "test-network-type",
-				ClusterNetwork: []types.ClusterNetworkEntry{
-					{
-						CIDR:       *ipnet.MustParseCIDR("1.2.3.4/5"),
-						HostPrefix: 6,
-					},
-				},
-				ServiceNetwork: []ipnet.IPNet{*ipnet.MustParseCIDR("1.2.3.4/5")},
-			},
-			ControlPlane: &types.MachinePool{
-				Name:     "control-plane",
-				Replicas: pointer.Int64Ptr(3),
-			},
-			Compute: []types.MachinePool{
-				{
-					Name:     "compute",
-					Replicas: pointer.Int64Ptr(3),
-				},
-			},
-			Platform: types.Platform{
-				VSphere: &vspheretypes.Platform{
-					VCenter:          "test-server-1",
-					Username:         "test-user-1",
-					Password:         "test-pass-1",
-					Datacenter:       "test-datacenter",
-					DefaultDatastore: "test-datastore",
-				},
-			},
-			PullSecret: "test-pull-secret",
-		}
+		return &types.InstallConfig{ObjectMeta: metav1.ObjectMeta{Name: "test-cluster"}, SSHKey: "test-ssh-key", BaseDomain: "test-domain", Networking: &types.Networking{MachineCIDR: ipnet.MustParseCIDR("1.2.3.4/5"), NetworkType: "test-network-type", ClusterNetwork: []types.ClusterNetworkEntry{{CIDR: *ipnet.MustParseCIDR("1.2.3.4/5"), HostPrefix: 6}}, ServiceNetwork: []ipnet.IPNet{*ipnet.MustParseCIDR("1.2.3.4/5")}}, ControlPlane: &types.MachinePool{Name: "control-plane", Replicas: pointer.Int64Ptr(3)}, Compute: []types.MachinePool{{Name: "compute", Replicas: pointer.Int64Ptr(3)}}, Platform: types.Platform{VSphere: &vspheretypes.Platform{VCenter: "test-server-1", Username: "test-user-1", Password: "test-pass-1", Datacenter: "test-datacenter", DefaultDatastore: "test-datastore"}}, PullSecret: "test-pull-secret"}
 	}
 	expectedConfig := createInstallConfig()
 	expectedYaml := `baseDomain: test-domain

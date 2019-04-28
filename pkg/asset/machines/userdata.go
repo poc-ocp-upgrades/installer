@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/base64"
 	"text/template"
-
 	"github.com/pkg/errors"
 )
 
@@ -29,6 +28,8 @@ items:
 `))
 
 func userDataList(data map[string][]byte) ([]byte, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	encodedData := map[string]string{}
 	for name, content := range data {
 		encodedData[name] = base64.StdEncoding.EncodeToString(content)

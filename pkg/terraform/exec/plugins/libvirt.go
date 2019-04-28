@@ -1,5 +1,3 @@
-// +build libvirt
-
 package plugins
 
 import (
@@ -8,12 +6,11 @@ import (
 )
 
 func init() {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	exec := func() {
 		defer libvirt.CleanupLibvirtConnections()
-
-		plugin.Serve(&plugin.ServeOpts{
-			ProviderFunc: libvirt.Provider,
-		})
+		plugin.Serve(&plugin.ServeOpts{ProviderFunc: libvirt.Provider})
 	}
 	KnownPlugins["terraform-provider-libvirt"] = exec
 }

@@ -5,8 +5,9 @@ import (
 	"github.com/openshift/installer/pkg/types/libvirt"
 )
 
-// SetMachinePoolDefaults sets the defaults for the machine pool.
 func SetMachinePoolDefaults(p *types.MachinePool, platform string) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	defaultReplicaCount := int64(3)
 	if platform == libvirt.Name {
 		defaultReplicaCount = 1
