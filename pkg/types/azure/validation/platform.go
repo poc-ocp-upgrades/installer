@@ -5,8 +5,9 @@ import (
 	"k8s.io/apimachinery/pkg/util/validation/field"
 )
 
-// ValidatePlatform checks that the specified platform is valid.
 func ValidatePlatform(p *azure.Platform, fldPath *field.Path) field.ErrorList {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	allErrs := field.ErrorList{}
 	if p.Region == "" {
 		allErrs = append(allErrs, field.Required(fldPath.Child("region"), "region should be set to one of the supported Azure regions"))

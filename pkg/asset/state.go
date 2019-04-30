@@ -4,28 +4,21 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-
 	"github.com/pkg/errors"
 )
 
-// State is the state of an Asset.
-type State struct {
-	Contents []Content
-}
-
-// Content is a generated portion of an Asset.
+type State struct{ Contents []Content }
 type Content struct {
-	Name string // the path on disk for this content.
-	Data []byte
+	Name	string
+	Data	[]byte
 }
 
-// PersistToFile persists the data in the State to files. Each Content entry that
-// has a non-empty Name will be persisted to a file with that name.
 func (s *State) PersistToFile(directory string) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if s == nil {
 		return nil
 	}
-
 	for _, c := range s.Contents {
 		if c.Name == "" {
 			continue

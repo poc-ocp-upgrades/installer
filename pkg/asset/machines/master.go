@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-
 	"github.com/ghodss/yaml"
 	libvirtapi "github.com/openshift/cluster-api-provider-libvirt/pkg/apis"
 	libvirtprovider "github.com/openshift/cluster-api-provider-libvirt/pkg/apis/libvirtproviderconfig/v1alpha1"
@@ -19,7 +18,6 @@ import (
 	azureprovider "sigs.k8s.io/cluster-api-provider-azure/pkg/apis/azureprovider/v1alpha1"
 	openstackapi "sigs.k8s.io/cluster-api-provider-openstack/pkg/apis"
 	openstackprovider "sigs.k8s.io/cluster-api-provider-openstack/pkg/apis/openstackproviderconfig/v1alpha1"
-
 	"github.com/openshift/installer/pkg/asset"
 	"github.com/openshift/installer/pkg/asset/ignition/machine"
 	"github.com/openshift/installer/pkg/asset/installconfig"
@@ -40,65 +38,49 @@ import (
 	vspheretypes "github.com/openshift/installer/pkg/types/vsphere"
 )
 
-// Master generates the machines for the `master` machine pool.
 type Master struct {
-	UserDataFile       *asset.File
-	MachineConfigFiles []*asset.File
-	MachineFiles       []*asset.File
+	UserDataFile		*asset.File
+	MachineConfigFiles	[]*asset.File
+	MachineFiles		[]*asset.File
 }
 
 const (
-	directory = "openshift"
-
-	// masterMachineFileName is the format string for constucting the master Machine filenames.
-	masterMachineFileName = "99_openshift-cluster-api_master-machines-%s.yaml"
-
-	// masterUserDataFileName is the filename used for the master user-data secret.
-	masterUserDataFileName = "99_openshift-cluster-api_master-user-data-secret.yaml"
+	directory		= "openshift"
+	masterMachineFileName	= "99_openshift-cluster-api_master-machines-%s.yaml"
+	masterUserDataFileName	= "99_openshift-cluster-api_master-user-data-secret.yaml"
 )
 
 var (
-	masterMachineFileNamePattern = fmt.Sprintf(masterMachineFileName, "*")
-
-	_ asset.WritableAsset = (*Master)(nil)
+	masterMachineFileNamePattern				= fmt.Sprintf(masterMachineFileName, "*")
+	_				asset.WritableAsset	= (*Master)(nil)
 )
 
-// Name returns a human friendly name for the Master Asset.
 func (m *Master) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Master Machines"
 }
-
-// Dependencies returns all of the dependencies directly needed by the
-// Master asset
 func (m *Master) Dependencies() []asset.Asset {
-	return []asset.Asset{
-		&installconfig.ClusterID{},
-		// PlatformCredsCheck just checks the creds (and asks, if needed)
-		// We do not actually use it in this asset directly, hence
-		// it is put in the dependencies but not fetched in Generate
-		&installconfig.PlatformCredsCheck{},
-		&installconfig.InstallConfig{},
-		new(rhcos.Image),
-		&machine.Master{},
-	}
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	return []asset.Asset{&installconfig.ClusterID{}, &installconfig.PlatformCredsCheck{}, &installconfig.InstallConfig{}, new(rhcos.Image), &machine.Master{}}
 }
-
 func awsDefaultMasterMachineType(installconfig *installconfig.InstallConfig) string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	region := installconfig.Config.Platform.AWS.Region
 	instanceClass := awsdefaults.InstanceClass(region)
 	return fmt.Sprintf("%s.xlarge", instanceClass)
 }
-
-// Generate generates the Master asset.
 func (m *Master) Generate(dependencies asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	clusterID := &installconfig.ClusterID{}
 	installconfig := &installconfig.InstallConfig{}
 	rhcosImage := new(rhcos.Image)
 	mign := &machine.Master{}
 	dependencies.Get(clusterID, installconfig, rhcosImage, mign)
-
 	ic := installconfig.Config
-
 	pool := ic.ControlPlane
 	var err error
 	machines := []machineapi.Machine{}
@@ -135,7 +117,6 @@ func (m *Master) Generate(dependencies asset.Parents) error {
 		mpool.Set(ic.Platform.OpenStack.DefaultMachinePlatform)
 		mpool.Set(pool.Platform.OpenStack)
 		pool.Platform.OpenStack = &mpool
-
 		machines, err = openstack.Machines(clusterID.InfraID, ic, pool, string(*rhcosImage), "master", "master-user-data")
 		if err != nil {
 			return errors.Wrap(err, "failed to create master machine objects")
@@ -147,7 +128,6 @@ func (m *Master) Generate(dependencies asset.Parents) error {
 		mpool.Set(ic.Platform.Azure.DefaultMachinePlatform)
 		mpool.Set(pool.Platform.Azure)
 		pool.Platform.Azure = &mpool
-
 		machines, err = azure.Machines(clusterID.InfraID, ic, pool, string(*rhcosImage), "master", "master-user-data")
 		if err != nil {
 			return errors.Wrap(err, "failed to create master machine objects")
@@ -157,18 +137,12 @@ func (m *Master) Generate(dependencies asset.Parents) error {
 	default:
 		return fmt.Errorf("invalid Platform")
 	}
-
 	userDataMap := map[string][]byte{"master-user-data": mign.File.Data}
 	data, err := userDataList(userDataMap)
 	if err != nil {
 		return errors.Wrap(err, "failed to create user-data secret for master machines")
 	}
-
-	m.UserDataFile = &asset.File{
-		Filename: filepath.Join(directory, masterUserDataFileName),
-		Data:     data,
-	}
-
+	m.UserDataFile = &asset.File{Filename: filepath.Join(directory, masterUserDataFileName), Data: data}
 	machineConfigs := []*mcfgv1.MachineConfig{}
 	if pool.Hyperthreading == types.HyperthreadingDisabled {
 		machineConfigs = append(machineConfigs, machineconfig.ForHyperthreadingDisabled("master"))
@@ -180,7 +154,6 @@ func (m *Master) Generate(dependencies asset.Parents) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create MachineConfig manifests for master machines")
 	}
-
 	m.MachineFiles = make([]*asset.File, len(machines))
 	padFormat := fmt.Sprintf("%%0%dd", len(fmt.Sprintf("%d", len(machines))))
 	for i, machine := range machines {
@@ -188,19 +161,14 @@ func (m *Master) Generate(dependencies asset.Parents) error {
 		if err != nil {
 			return errors.Wrapf(err, "marshal master %d", i)
 		}
-
 		padded := fmt.Sprintf(padFormat, i)
-		m.MachineFiles[i] = &asset.File{
-			Filename: filepath.Join(directory, fmt.Sprintf(masterMachineFileName, padded)),
-			Data:     data,
-		}
+		m.MachineFiles[i] = &asset.File{Filename: filepath.Join(directory, fmt.Sprintf(masterMachineFileName, padded)), Data: data}
 	}
-
 	return nil
 }
-
-// Files returns the files generated by the asset.
 func (m *Master) Files() []*asset.File {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	files := make([]*asset.File, 0, 1+len(m.MachineConfigFiles)+len(m.MachineFiles))
 	if m.UserDataFile != nil {
 		files = append(files, m.UserDataFile)
@@ -209,9 +177,9 @@ func (m *Master) Files() []*asset.File {
 	files = append(files, m.MachineFiles...)
 	return files
 }
-
-// Load reads the asset files from disk.
 func (m *Master) Load(f asset.FileFetcher) (found bool, err error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	file, err := f.FetchByName(filepath.Join(directory, masterUserDataFileName))
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -220,35 +188,26 @@ func (m *Master) Load(f asset.FileFetcher) (found bool, err error) {
 		return false, err
 	}
 	m.UserDataFile = file
-
 	m.MachineConfigFiles, err = machineconfig.Load(f, "master", directory)
 	if err != nil {
 		return true, err
 	}
-
 	fileList, err := f.FetchByPattern(filepath.Join(directory, masterMachineFileNamePattern))
 	if err != nil {
 		return true, err
 	}
-
 	m.MachineFiles = fileList
 	return true, nil
 }
-
-// Machines returns master Machine manifest structures.
 func (m *Master) Machines() ([]machineapi.Machine, error) {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	scheme := runtime.NewScheme()
 	awsapi.AddToScheme(scheme)
 	azureapi.AddToScheme(scheme)
 	libvirtapi.AddToScheme(scheme)
 	openstackapi.AddToScheme(scheme)
-	decoder := serializer.NewCodecFactory(scheme).UniversalDecoder(
-		awsprovider.SchemeGroupVersion,
-		azureprovider.SchemeGroupVersion,
-		libvirtprovider.SchemeGroupVersion,
-		openstackprovider.SchemeGroupVersion,
-	)
-
+	decoder := serializer.NewCodecFactory(scheme).UniversalDecoder(awsprovider.SchemeGroupVersion, azureprovider.SchemeGroupVersion, libvirtprovider.SchemeGroupVersion, openstackprovider.SchemeGroupVersion)
 	machines := []machineapi.Machine{}
 	for i, file := range m.MachineFiles {
 		machine := &machineapi.Machine{}
@@ -256,22 +215,18 @@ func (m *Master) Machines() ([]machineapi.Machine, error) {
 		if err != nil {
 			return machines, errors.Wrapf(err, "unmarshal master %d", i)
 		}
-
 		obj, _, err := decoder.Decode(machine.Spec.ProviderSpec.Value.Raw, nil, nil)
 		if err != nil {
 			return machines, errors.Wrapf(err, "unmarshal master %d", i)
 		}
-
 		machine.Spec.ProviderSpec.Value = &runtime.RawExtension{Object: obj}
 		machines = append(machines, *machine)
 	}
-
 	return machines, nil
 }
-
-// IsMachineManifest tests whether a file is a manifest that belongs to the
-// Master Machines or Worker Machines asset.
 func IsMachineManifest(file *asset.File) bool {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	if filepath.Dir(file.Filename) != directory {
 		return false
 	}

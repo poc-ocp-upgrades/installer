@@ -3,10 +3,8 @@ package installconfig
 import (
 	"fmt"
 	"sort"
-
 	"github.com/pkg/errors"
 	survey "gopkg.in/AlecAivazis/survey.v1"
-
 	"github.com/openshift/installer/pkg/asset"
 	awsconfig "github.com/openshift/installer/pkg/asset/installconfig/aws"
 	azureconfig "github.com/openshift/installer/pkg/asset/installconfig/azure"
@@ -22,26 +20,22 @@ import (
 	"github.com/openshift/installer/pkg/types/vsphere"
 )
 
-// Platform is an asset that queries the user for the platform on which to install
-// the cluster.
-type platform struct {
-	types.Platform
-}
+type platform struct{ types.Platform }
 
 var _ asset.Asset = (*platform)(nil)
 
-// Dependencies returns no dependencies.
 func (a *platform) Dependencies() []asset.Asset {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return []asset.Asset{}
 }
-
-// Generate queries for input from the user.
 func (a *platform) Generate(asset.Parents) error {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	platform, err := a.queryUserForPlatform()
 	if err != nil {
 		return err
 	}
-
 	switch platform {
 	case aws.Name:
 		a.AWS, err = awsconfig.Platform()
@@ -73,35 +67,28 @@ func (a *platform) Generate(asset.Parents) error {
 	default:
 		return fmt.Errorf("unknown platform type %q", platform)
 	}
-
 	return nil
 }
-
-// Name returns the human-friendly name of the asset.
 func (a *platform) Name() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return "Platform"
 }
-
 func (a *platform) queryUserForPlatform() (platform string, err error) {
-	err = survey.Ask([]*survey.Question{
-		{
-			Prompt: &survey.Select{
-				Message: "Platform",
-				Options: types.PlatformNames,
-			},
-			Validate: survey.ComposeValidators(survey.Required, func(ans interface{}) error {
-				choice := ans.(string)
-				i := sort.SearchStrings(types.PlatformNames, choice)
-				if i == len(types.PlatformNames) || types.PlatformNames[i] != choice {
-					return errors.Errorf("invalid platform %q", choice)
-				}
-				return nil
-			}),
-		},
-	}, &platform)
+	_logClusterCodePath()
+	defer _logClusterCodePath()
+	err = survey.Ask([]*survey.Question{{Prompt: &survey.Select{Message: "Platform", Options: types.PlatformNames}, Validate: survey.ComposeValidators(survey.Required, func(ans interface{}) error {
+		choice := ans.(string)
+		i := sort.SearchStrings(types.PlatformNames, choice)
+		if i == len(types.PlatformNames) || types.PlatformNames[i] != choice {
+			return errors.Errorf("invalid platform %q", choice)
+		}
+		return nil
+	})}}, &platform)
 	return
 }
-
 func (a *platform) CurrentName() string {
+	_logClusterCodePath()
+	defer _logClusterCodePath()
 	return a.Platform.Name()
 }
